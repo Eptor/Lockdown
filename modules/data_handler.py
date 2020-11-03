@@ -1,21 +1,34 @@
-import sqlite3
+# Modulos locales
 from modules.crypto import encrypt, decrypt
 
+# Modulos externos (pip install)
+import sqlite3
+
+# Conexion a la base de datos
 conn = sqlite3.connect("database/data.sqlite")
 cursor = conn.cursor()
 
 
-def get_user_data(input):
-    cursor.execute(f"SELECT password FROM users WHERE user = '{input}'")
+def get_user_data(entry):
+
+    """ Consigue la contraseña del usuario especificado """
+
+    cursor.execute(f"SELECT password FROM users WHERE user = '{entry}'")
     user = cursor.fetchone()[0]
     return user
 
 
 def get_user_passwords():
+
+    """ Consigue los nombres de contraseñas disponibles """
+
     return cursor.execute("SELECT Nombre FROM data")
 
 
 def insert_data(key):
+
+    """ Agrega registros a la base de datos """
+
     print("Vamos a agregar un registro nuevo!")
     nombre = input("Nombre: ")
     email = encrypt(input("E-mail: "), key)
@@ -28,12 +41,18 @@ def insert_data(key):
 
 
 def get_password_data(nombre):
+
+    """ Consigue los datos de la contraseña seleccionada """
+
     cursor.execute(f"SELECT * FROM data WHERE Nombre = '{nombre}'")
     data = cursor.fetchall()[0]
     return data
 
 
 def delete_data():
+
+    """ Elimina la contraseña seleccionada """
+
     nombre = input("Nombre: ")
     confirmacion = input(
         f"Seguro que quires eliminar {nombre} de tus registros? (y/o)\n> "
@@ -50,12 +69,18 @@ def delete_data():
 
 
 def recovery(entry):
+
+    """ Funcion para recuperar la contraseña con la clave mnemotécnica """
+
     cursor.execute(f"SELECT backup FROM users WHERE user = '{entry}'")
     user = cursor.fetchone()[0]
     return user
 
 
 def edit_data(entry, key):
+
+    """ Cambia los datos de una contraseña por unos nuevos """
+
     try:
         nombre = input("Nombre: ")
         email = encrypt(input("E-mail: "), key)

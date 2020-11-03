@@ -1,3 +1,6 @@
+""" ARCHIVO PENDIENTE DE LIPIEZA Y COMENTARIOS """
+
+
 from crypto import mnemotecnica, encrypt
 
 import sqlite3
