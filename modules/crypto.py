@@ -53,10 +53,20 @@ def mnemotecnica():
         palabras = texto.read().split("\n")
 
     for i in range(0, 9):
-        palabra += f"{choice(palabras)} "
+        palabra += f"{choice(palabras)}-"
 
-    return palabra
+    return palabra[0:-1]
 
 
 if __name__ == "__main__":
-    mnemotecnica()
+    a = encrypt(
+        "admin",
+        "Depositar-Integrar-Decolorar-Beldad-Agobiar-Natural-Consolar-Orientar-Mencionar",
+    )
+    print(a)
+    print(
+        decrypt(
+            a,
+            "Depositar-Integrar-Decolorar-Beldad-Agobiar-Natural-Consolar-Orientar-Mencionar",
+        )
+    )

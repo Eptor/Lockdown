@@ -14,7 +14,7 @@ if path.isfile("database/data.sqlite"):
     quit()
 else:
     pass
-
+    system("cls")
     print(Fore.CYAN + "Bienvenido a la instalación de Lockdown!")
     print("\nVamos a comenzar\n")
     sleep(1)
@@ -78,6 +78,7 @@ else:
     print("\nPara tu comodidad, la hemos copiado a tu portapapeles.")
     input("\nCuando estés listo para continuar, presiona {ENTER}")
     print("\nAhora te añadiremos a la base de datos, aguarda un momento.")
+    key = input("Introduce tu clave mnemotécnica:\n> ")
     cursor.execute(
         f"INSERT INTO users VALUES ('{usuario}', '{encrypt(passwd, passwd)}', '{encrypt(passwd, key)}')"
     )
