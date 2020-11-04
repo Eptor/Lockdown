@@ -10,6 +10,7 @@ from getpass import getpass
 # Modulos externos (pip install)
 from colorama import init, Fore
 from prettytable import PrettyTable, from_db_cursor
+import pyperclip
 
 init(autoreset=True)  # Colorama init
 
@@ -18,12 +19,12 @@ def menu():
     os.system("cls")
     print(
         """
-  _                _       _                     
- | |              | |     | |                    
- | |     ___   ___| | ____| | _____      ___ __  
- | |    / _ \ / __| |/ / _` |/ _ \ \ /\ / / '_ \ 
+  _                _       _
+ | |              | |     | |
+ | |     ___   ___| | ____| | _____      ___ __
+ | |    / _ \ / __| |/ / _` |/ _ \ \ /\ / / '_ \
  | |___| (_) | (__|   < (_| | (_) \ V  V /| | | |
- |______\___/ \___|_|\_\__,_|\___/ \_/\_/ |_| |_| 
+ |______\___/ \___|_|\_\__,_|\___/ \_/\_/ |_| |_|
     """
     )
     print(from_db_cursor(get_user_passwords()))
@@ -56,7 +57,7 @@ while True:
         else:
             continue
     except Exception:
-        print(Fore.RED + "\Datos erroneos.")
+        print(Fore.RED + "\nDatos erroneos.")
         sleep(1)
 
 
@@ -73,9 +74,16 @@ try:
             table.add_row(
                 [data[0], decrypt(data[1], key), decrypt(data[2], key), data[3]]
             )
-            print(table)
-            input("\nPresiona enter para regresar al menu")
-            del table
+            print()
+            try:
+                print(table)
+                input(
+                    "\nPresiona ENTER para regresar al menu\nPresiona CTRL + C para copiar la contraseña"
+                )
+            except KeyboardInterrupt:
+                pyperclip.copy(decrypt(data[2], key))
+            else:
+                del table
 
         elif om == "2":
             os.system("cls")
@@ -111,6 +119,7 @@ try:
                 sleep(2)
         else:
             pass
+
 except KeyboardInterrupt:
     os.system("cls")
     print(Fore.CYAN + "Gracias por usar Lockdown!")
