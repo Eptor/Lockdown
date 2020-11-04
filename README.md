@@ -6,7 +6,7 @@ Lockdown es el sucesor espiritual de Padlock, el primer administrador de contras
 
 ![](etc/menu.png)
 
-## Uso
+## Instalación
 
 Instalar requerimientos
 
@@ -26,10 +26,16 @@ Correr Lockdown
 main.py
 ```
 
-
 ## Que tan seguro es?
 
-Lockdown utiliza el metodo de encriptado Fernet, el cual es un metodo de encriptado simetrico, por lo que tus contraseñas están seguros.
+Lockdown utiliza el metodo de encriptado Fernet, el cual es un metodo de encriptado simetrico, por lo que tus contraseñas están seguras.
+
+
+![](https://media.giphy.com/media/TUeaUjG3tOkffSkw6O/giphy.gif)
+
+Y asi está el texto en la base de datos
+
+![](etc/not_fb.png)
 
 ## Olvidaste tu contraseña?
 
