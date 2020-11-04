@@ -82,10 +82,10 @@ try:
             try:
                 insert_data(key)  # Añadir registro
             except Exception as e:
-                print(Fore.RED+"Error al añadir")
+                print(Fore.RED + "Error al añadir")
                 print(e)
             else:
-                print(Fore.GREEN+"\nAñadido con exito.")
+                print(Fore.GREEN + "\nAñadido con exito.")
             sleep(2)
 
         elif om == "3":
@@ -113,7 +113,7 @@ try:
             pass
 except KeyboardInterrupt:
     os.system("cls")
-    print(Fore.CYAN+"Gracias por usar Lockdown!")
+    print(Fore.CYAN + "Gracias por usar Lockdown!")
     sleep(1)
     print("\nSaliendo.")
     sleep(1)

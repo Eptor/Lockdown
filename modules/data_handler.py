@@ -9,7 +9,7 @@ from colorama import Fore, init
 conn = sqlite3.connect("database/data.sqlite")
 cursor = conn.cursor()
 
-init(autoreset=True) # Colorama init
+init(autoreset=True)  # Colorama init
 
 
 def get_user_data(entry):
@@ -32,7 +32,7 @@ def insert_data(key):
 
     """ Agrega registros a la base de datos """
 
-    print(Fore.YELLOW+"Vamos a agregar un registro nuevo!\n")
+    print(Fore.YELLOW + "Vamos a agregar un registro nuevo!\n")
     nombre = input("Nombre: ")
     email = encrypt(input("E-mail: "), key)
     contraseña = encrypt(input("Contraseña: "), key)
