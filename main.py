@@ -49,12 +49,14 @@ while True:
             input("Presiona enter para continuar")
 
         elif key == decrypt(get_user_data(user), key):  # Login exitoso
+            print(Fore.GREEN + "\nLogin exitoso")
+            sleep(1)
             break
 
         else:
             continue
     except Exception:
-        print(Fore.RED + "Datos erroneos.")
+        print(Fore.RED + "\Datos erroneos.")
         sleep(1)
 
 
@@ -77,16 +79,23 @@ try:
 
         elif om == "2":
             os.system("cls")
-            insert_data(key)  # Añadir registro
+            try:
+                insert_data(key)  # Añadir registro
+            except Exception as e:
+                print(Fore.RED+"Error al añadir")
+                print(e)
+            else:
+                print(Fore.GREEN+"\nAñadido con exito.")
+            sleep(2)
 
         elif om == "3":
             os.system("cls")
             if delete_data():  # Elimianr registro
-                print(Fore.GREEN + "Eliminado con exito.")
+                print(Fore.GREEN + "\nEliminado con exito.")
                 sleep(2)
 
             else:
-                print(Fore.RED + "No ha sido eliminado.")
+                print(Fore.RED + "\nNo ha sido eliminado.")
                 sleep(2)
 
         elif om == "4":
@@ -94,18 +103,18 @@ try:
             cambiar = input("Editar: ")  # Cambiar datos de registro
 
             if edit_data(cambiar, key):
-                print(Fore.GREEN + "Editado con exito!")
+                print(Fore.GREEN + "\nEditado con exito!")
                 sleep(2)
 
             else:
-                print(Fore.RED + "No fue editado.")
+                print(Fore.RED + "\nNo fue editado.")
                 sleep(2)
         else:
             pass
 except KeyboardInterrupt:
     os.system("cls")
-    print("Gracias por usar Lockdown!")
+    print(Fore.CYAN+"Gracias por usar Lockdown!")
     sleep(1)
-    print("Saliendo.")
+    print("\nSaliendo.")
     sleep(1)
     quit()
