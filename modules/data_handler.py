@@ -3,10 +3,13 @@ from modules.crypto import encrypt, decrypt
 
 # Modulos externos (pip install)
 import sqlite3
+from colorama import Fore, init
 
 # Conexion a la base de datos
 conn = sqlite3.connect("database/data.sqlite")
 cursor = conn.cursor()
+
+init(autoreset=True) # Colorama init
 
 
 def get_user_data(entry):
@@ -29,7 +32,7 @@ def insert_data(key):
 
     """ Agrega registros a la base de datos """
 
-    print("Vamos a agregar un registro nuevo!")
+    print(Fore.YELLOW+"Vamos a agregar un registro nuevo!\n")
     nombre = input("Nombre: ")
     email = encrypt(input("E-mail: "), key)
     contraseña = encrypt(input("Contraseña: "), key)
@@ -55,7 +58,7 @@ def delete_data():
 
     nombre = input("Nombre: ")
     confirmacion = input(
-        f"Seguro que quires eliminar {nombre} de tus registros? (y/o)\n> "
+        f"Seguro que quires eliminar {nombre} de tus registros? (y/n)\n> "
     )
     try:
         if confirmacion.lower() == "y":
