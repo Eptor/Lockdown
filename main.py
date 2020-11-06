@@ -18,7 +18,8 @@ init(autoreset=True)  # Colorama init
 def menu():
     os.system("cls")
     print(
-        Fore.CYAN+"""
+        Fore.CYAN
+        + """
  __        ______     ______  __  ___  _______   ______   ____    __    ____ .__   __.
 |  |      /  __  \   /      ||  |/  / |       \ /  __  \  \   \  /  \  /   / |  \ |  |
 |  |     |  |  |  | |  ,----'|  '  /  |  .--.  |  |  |  |  \   \/    \/   /  |   \|  |
