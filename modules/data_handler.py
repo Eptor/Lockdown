@@ -85,10 +85,29 @@ def edit_data(entry, key):
     """ Cambia los datos de una contraseña por unos nuevos """
 
     try:
+        data = get_password_data(entry)
+        print(Fore.YELLOW+"\nDeja en blanco lo que no desees cambiar !\n")
         nombre = input("Nombre: ")
-        email = encrypt(input("E-mail: "), key)
-        contraseña = encrypt(input("Contraseña: "), key)
+        email = input("E-mail: ")
+        contraseña = input("Contraseña: ")
         link = input("Link: ")
+
+        if nombre == "":
+            nombre = data[0]
+
+        if email == "":
+            email = data[1]
+        else:
+            email = encrypt(email, key)
+
+        if contraseña == "":
+            contraseña = data[2]
+        else:
+            contraseña = encrypt(contraseña, key)
+
+        if link == "":
+            link = data[3]
+
         cursor.execute(
             f"UPDATE data SET Nombre = '{nombre}', Email = '{email}', Contraseña = '{contraseña}', Link = '{link}' WHERE Nombre = '{entry}'"
         )
