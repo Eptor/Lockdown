@@ -86,7 +86,7 @@ def edit_data(entry, key):
 
     try:
         data = get_password_data(entry)
-        print(Fore.YELLOW+"\nDeja en blanco lo que no desees cambiar !\n")
+        print(Fore.YELLOW + "\nDeja en blanco lo que no desees cambiar !\n")
         nombre = input("Nombre: ")
         email = input("E-mail: ")
         contraseña = input("Contraseña: ")
