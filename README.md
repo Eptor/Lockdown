@@ -50,6 +50,12 @@ Para acceder a la funcion de recovery deberás:
 
 - d) Seguir las instrucciones
 
+## Versiones
+
+### v1.0 (08/11/2020)
+ - Primer version
+
+
 ## License
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
