@@ -130,4 +130,5 @@ dmypy.json
 
 #Custom
 database/data.sqlite
+database/data_backup.lockdown
 .vscode/

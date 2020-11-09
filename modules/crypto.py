@@ -4,6 +4,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from random import choice
+from string import ascii_letters, digits, punctuation
 
 # The base process was grabbed from the Docs:
 # https://cryptography.io/en/latest/fernet/#using-passwords-with-fernet
@@ -22,7 +23,11 @@ def encrypt(data, password):
     # Generación de llave mediante la contraseña dada
     key = base64.urlsafe_b64encode(kdf.derive(password.encode()))
     f = Fernet(key)
-    EncryptedToken = f.encrypt(data.encode())
+    try:
+        EncryptedToken = f.encrypt(data.encode())
+    except AttributeError:
+        EncryptedToken = f.encrypt(data)
+
     return EncryptedToken.decode()
 
 
@@ -43,6 +48,23 @@ def decrypt(data, password):
     return DecryptedToken.decode()
 
 
+def decrypt_bkp(data, password):
+    """ Decrypts the data given by the user """
+
+    kdf = PBKDF2HMAC(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=b"g\xe0\\F\x90\x15Dr\x1e-\xa8u\xd9Y\x0c\x82",
+        iterations=100000,
+        backend=default_backend(),
+    )
+    # Generación de llave mediante la contraseña dada
+    key = base64.urlsafe_b64encode(kdf.derive(password.encode()))
+    f = Fernet(key)
+    DecryptedToken = f.decrypt(data)
+    return DecryptedToken
+
+
 def mnemotecnica():
 
     """ Generación de clave para recuperación """
@@ -58,15 +80,14 @@ def mnemotecnica():
     return palabra[0:-1]
 
 
+def generador():
+    password = ""
+    data = ascii_letters + digits + punctuation
+    for i in range(0, 12):
+        password += choice(data)
+
+    return password
+
+
 if __name__ == "__main__":
-    a = encrypt(
-        "admin",
-        "Depositar-Integrar-Decolorar-Beldad-Agobiar-Natural-Consolar-Orientar-Mencionar",
-    )
-    print(a)
-    print(
-        decrypt(
-            a,
-            "Depositar-Integrar-Decolorar-Beldad-Agobiar-Natural-Consolar-Orientar-Mencionar",
-        )
-    )
+    generador()
