@@ -4,6 +4,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from random import choice
+from string import ascii_letters, digits, punctuation
 
 # The base process was grabbed from the Docs:
 # https://cryptography.io/en/latest/fernet/#using-passwords-with-fernet
@@ -46,6 +47,7 @@ def decrypt(data, password):
     DecryptedToken = f.decrypt(data.encode())
     return DecryptedToken.decode()
 
+
 def decrypt_bkp(data, password):
     """ Decrypts the data given by the user """
 
@@ -62,6 +64,7 @@ def decrypt_bkp(data, password):
     DecryptedToken = f.decrypt(data)
     return DecryptedToken
 
+
 def mnemotecnica():
 
     """ Generación de clave para recuperación """
@@ -75,3 +78,16 @@ def mnemotecnica():
         palabra += f"{choice(palabras)}-"
 
     return palabra[0:-1]
+
+
+def generador():
+    password = ""
+    data = ascii_letters + digits + punctuation
+    for i in range(0, 12):
+        password += choice(data)
+
+    return password
+
+
+if __name__ == "__main__":
+    generador()
