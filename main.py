@@ -1,5 +1,5 @@
 # Modulos locales
-from modules.crypto import encrypt, decrypt, decrypt_bkp
+from modules.crypto import encrypt, decrypt, decrypt_bkp, generador
 from modules.data_handler import (
     get_user_data,
     get_user_passwords,
@@ -41,6 +41,7 @@ def menu():
     print("2) - Añadir registro")
     print("3) - Eliminar registro")
     print("4) - Modificar registro")
+    print("5) - Generador")
 
     print("\nBKP) - Crear respaldo")
     print("\nCTRL + C) - Salir\n")
@@ -60,17 +61,21 @@ while True:
             print(Fore.YELLOW + f"Tu contraseña es: {decrypt(recovery(user), mn)}")
             input("Presiona enter para continuar")
 
-        elif user == "help" and key == "backup": # Usar nueva base de datos
+        elif user == "help" and key == "backup":  # Usar nueva base de datos
 
-            print(Fore.YELLOW+"Espera mientras leemos el archivo")
+            print(Fore.YELLOW + "Espera mientras leemos el archivo")
 
-            with open("database/data_backup.lockdown", "rb") as data_read: # Leer bytes del archivo para desencriptado
+            with open(
+                "database/data_backup.lockdown", "rb"
+            ) as data_read:  # Leer bytes del archivo para desencriptado
                 data = decrypt_bkp(data_read.read(), input("Clave mnemotécnica\n> "))
 
-            with open("database/data.sqlite", "wb") as data_write: # Sobre-escribir la base de datos actual con la nueva
+            with open(
+                "database/data.sqlite", "wb"
+            ) as data_write:  # Sobre-escribir la base de datos actual con la nueva
                 data_write.write(data)
 
-            print(Fore.CYAN+"Base de datos restaurada")
+            print(Fore.CYAN + "Base de datos restaurada")
             sleep(2)
 
         elif key == decrypt(get_user_data(user), key):  # Login exitoso
@@ -152,14 +157,29 @@ try:
                 print(Fore.YELLOW + "Volviendo al menu.")
                 sleep(1)
 
-        elif om == "BKP": # Respaldo
+        elif om == "5":
             os.system("cls")
-            print(Fore.YELLOW+"Espera a que realicemos el backup")
+            print(Fore.YELLOW + "Vamos a generarte una contraseña nueva !")
+            sleep(1)
+            password = generador()
+            print("\nTu contraseña es:", Fore.MAGENTA + password)
+            sleep(1)
+            pyperclip.copy(password)
+            print(Fore.CYAN + "\nLa copiamos a tu portapapeles !")
+            sleep(2)
 
-            with open("database/data.sqlite", "rb") as data_read: # Leer los bytes del archivo para encriptarlos
+        elif om == "BKP":  # Respaldo
+            os.system("cls")
+            print(Fore.YELLOW + "Espera a que realicemos el backup")
+
+            with open(
+                "database/data.sqlite", "rb"
+            ) as data_read:  # Leer los bytes del archivo para encriptarlos
                 data = encrypt(data_read.read(), input("Clave mnemotécnica\n> "))
 
-            with open("database/data_backup.lockdown", "wb") as data_write: # Escribe los bytes encriptados en un nuevo archivo
+            with open(
+                "database/data_backup.lockdown", "wb"
+            ) as data_write:  # Escribe los bytes encriptados en un nuevo archivo
                 data_write.write(data.encode())
 
             print("Completado.")
