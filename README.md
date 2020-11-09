@@ -51,7 +51,7 @@ Para acceder a la funcion de recovery deberás:
 ### v1.0 (08/11/2020)
  - Primer version
 
-### V1.5 (pendiente)
+### V1.5 (9/11/2020)
  - Respaldo
  - Generador de contraseñas
 
