@@ -2,7 +2,8 @@
 
 > Keep your data safe and locked away
 
-Lockdown es el sucesor espiritual de Padlock, el primer administrador de contraseñas que hice. 
+
+Lockdown es el sucesor espiritual de Padlock, el primer administrador de contraseñas que hice.
 
 ![](etc/menu.png)
 
@@ -20,11 +21,6 @@ Instalar base de datos
 modules/install.py
 ```
 
-Correr Lockdown
-
-```sh
-main.py
-```
 
 ## Que tan seguro es?
 
@@ -39,7 +35,7 @@ Y asi está el texto en la base de datos
 
 ## Olvidaste tu contraseña?
 
-No te preocupes, al instalar la base de datos, se te genera una clave mnemotécnica para utilizar en caso de un recovery necesario
+No te preocupes, al instalar la base de datos, se te genera una clave mnemotécnica para utilizar en caso de un recovery necesario.
 Para acceder a la funcion de recovery deberás:
 
 - a) En usuario escribir "help"
@@ -55,6 +51,9 @@ Para acceder a la funcion de recovery deberás:
 ### v1.0 (08/11/2020)
  - Primer version
 
+### V1.5 (pendiente)
+ - Respaldo
+ - Generador de contraseñas
 
 ## License
 
