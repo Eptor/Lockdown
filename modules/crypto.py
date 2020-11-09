@@ -22,7 +22,11 @@ def encrypt(data, password):
     # Generación de llave mediante la contraseña dada
     key = base64.urlsafe_b64encode(kdf.derive(password.encode()))
     f = Fernet(key)
-    EncryptedToken = f.encrypt(data.encode())
+    try:
+        EncryptedToken = f.encrypt(data.encode())
+    except AttributeError:
+        EncryptedToken = f.encrypt(data)
+
     return EncryptedToken.decode()
 
 
@@ -42,6 +46,21 @@ def decrypt(data, password):
     DecryptedToken = f.decrypt(data.encode())
     return DecryptedToken.decode()
 
+def decrypt_bkp(data, password):
+    """ Decrypts the data given by the user """
+
+    kdf = PBKDF2HMAC(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=b"g\xe0\\F\x90\x15Dr\x1e-\xa8u\xd9Y\x0c\x82",
+        iterations=100000,
+        backend=default_backend(),
+    )
+    # Generación de llave mediante la contraseña dada
+    key = base64.urlsafe_b64encode(kdf.derive(password.encode()))
+    f = Fernet(key)
+    DecryptedToken = f.decrypt(data)
+    return DecryptedToken
 
 def mnemotecnica():
 
@@ -56,17 +75,3 @@ def mnemotecnica():
         palabra += f"{choice(palabras)}-"
 
     return palabra[0:-1]
-
-
-if __name__ == "__main__":
-    a = encrypt(
-        "admin",
-        "Depositar-Integrar-Decolorar-Beldad-Agobiar-Natural-Consolar-Orientar-Mencionar",
-    )
-    print(a)
-    print(
-        decrypt(
-            a,
-            "Depositar-Integrar-Decolorar-Beldad-Agobiar-Natural-Consolar-Orientar-Mencionar",
-        )
-    )
