@@ -36,7 +36,7 @@ def menu():
 |_______| \______/   \______||__|\__\ |_______/ \______/      \__/  \__/     |__| \__| v1.5
     """
     )
-    print(from_db_cursor(get_user_passwords()))
+    print(from_db_cursor(get_user_passwords())) # Generador de la tabla
     print("\n1) - Ver registro")
     print("2) - Añadir registro")
     print("3) - Eliminar registro")
@@ -86,7 +86,7 @@ while True:
         else:
             continue
 
-    except Exception as e:
+    except Exception:
         print(Fore.RED + "\nDatos erroneos.")
         sleep(1)
 
@@ -96,7 +96,7 @@ try:
     while True:
         menu()
         om = input("> ")
-        if om == "1":
+        if om == "1": # Ver datos
             table = PrettyTable()  # Creacion de la tabla
             os.system("cls")
             try:
@@ -157,7 +157,7 @@ try:
                 print(Fore.YELLOW + "Volviendo al menu.")
                 sleep(1)
 
-        elif om == "5":
+        elif om == "5": # Generador de contraseñas
             os.system("cls")
             print(Fore.YELLOW + "Vamos a generarte una contraseña nueva !")
             sleep(1)
