@@ -1,3 +1,6 @@
+#! D:\Programacion\Lockdown\env\Scripts\python
+# Este es mi ambiente virtual, eres libre de eliminar estas lineas.
+
 # Modulos locales
 from modules.crypto import encrypt, decrypt, decrypt_bkp, generador
 from modules.data_handler import (
@@ -28,15 +31,15 @@ def menu():
     print(
         Fore.CYAN
         + """
- __        ______     ______  __  ___  _______   ______   ____    __    ____ .__   __.
-|  |      /  __  \   /      ||  |/  / |       \ /  __  \  \   \  /  \  /   / |  \ |  |
-|  |     |  |  |  | |  ,----'|  '  /  |  .--.  |  |  |  |  \   \/    \/   /  |   \|  |
-|  |     |  |  |  | |  |     |    <   |  |  |  |  |  |  |   \            /   |  . `  |
-|  `----.|  `--'  | |  `----.|  .  \  |  '--'  |  `--'  |    \    /\    /    |  |\   |
-|_______| \______/   \______||__|\__\ |_______/ \______/      \__/  \__/     |__| \__| v1.5
+             __        ______     ______  __  ___  _______   ______   ____    __    ____ .__   __.
+            |  |      /  __  \   /      ||  |/  / |       \ /  __  \  \   \  /  \  /   / |  \ |  |
+            |  |     |  |  |  | |  ,----'|  '  /  |  .--.  |  |  |  |  \   \/    \/   /  |   \|  |
+            |  |     |  |  |  | |  |     |    <   |  |  |  |  |  |  |   \            /   |  . `  |
+            |  `----.|  `--'  | |  `----.|  .  \  |  '--'  |  `--'  |    \    /\    /    |  |\   |
+            |_______| \______/   \______||__|\__\ |_______/ \______/      \__/  \__/     |__| \__| v1.5
     """
     )
-    print(from_db_cursor(get_user_passwords())) # Generador de la tabla
+    print(from_db_cursor(get_user_passwords()))  # Generador de la tabla
     print("\n1) - Ver registro")
     print("2) - Añadir registro")
     print("3) - Eliminar registro")
@@ -58,7 +61,10 @@ while True:
             user = input("Introduce tu usuario: ")
             mn = input("> Introduce tu clave mnemotécnica:\n> ")
             os.system("cls")
-            print(Fore.YELLOW + f"Tu contraseña es: {decrypt(recovery(user), mn)}")
+            print(
+                Fore.YELLOW
+                + f"Tu contraseña es: {decrypt(recovery(user), mn)}"
+            )
             input("Presiona enter para continuar")
 
         elif user == "help" and key == "backup":  # Usar nueva base de datos
@@ -68,7 +74,9 @@ while True:
             with open(
                 "database/data_backup.lockdown", "rb"
             ) as data_read:  # Leer bytes del archivo para desencriptado
-                data = decrypt_bkp(data_read.read(), input("Clave mnemotécnica\n> "))
+                data = decrypt_bkp(
+                    data_read.read(), input("Clave mnemotécnica\n> ")
+                )
 
             with open(
                 "database/data.sqlite", "wb"
@@ -96,18 +104,25 @@ try:
     while True:
         menu()
         om = input("> ")
-        if om == "1": # Ver datos
+        if om == "1":  # Ver datos
             table = PrettyTable()  # Creacion de la tabla
             os.system("cls")
             try:
-                data = get_password_data(input("Nombre: "))  # Obtencion de datos
+                data = get_password_data(
+                    input("Nombre: ")
+                )  # Obtencion de datos
             except IndexError:
                 print(Fore.RED + "\nNo existen registros con ese nombre !")
                 sleep(2)
             else:
                 table.field_names = ["Nombre", "Email", "Contraseña", "Link"]
                 table.add_row(
-                    [data[0], decrypt(data[1], key), decrypt(data[2], key), data[3]]
+                    [
+                        data[0],
+                        decrypt(data[1], key),
+                        decrypt(data[2], key),
+                        data[3],
+                    ]
                 )
                 print()
                 try:
@@ -157,7 +172,7 @@ try:
                 print(Fore.YELLOW + "Volviendo al menu.")
                 sleep(1)
 
-        elif om == "5": # Generador de contraseñas
+        elif om == "5":  # Generador de contraseñas
             os.system("cls")
             print(Fore.YELLOW + "Vamos a generarte una contraseña nueva !")
             sleep(1)
@@ -175,7 +190,9 @@ try:
             with open(
                 "database/data.sqlite", "rb"
             ) as data_read:  # Leer los bytes del archivo para encriptarlos
-                data = encrypt(data_read.read(), input("Clave mnemotécnica\n> "))
+                data = encrypt(
+                    data_read.read(), input("Clave mnemotécnica\n> ")
+                )
 
             with open(
                 "database/data_backup.lockdown", "wb"
