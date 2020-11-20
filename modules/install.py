@@ -12,7 +12,9 @@ import pyperclip
 
 init(autoreset=True)  # Colorama init
 
-if path.isfile("database/data.sqlite"):  # Verificar si ya existe una instalación
+if path.isfile(
+    "database/data.sqlite"
+):  # Verificar si ya existe una instalación
     print("Ya existe una instalación.")
     quit()
 
