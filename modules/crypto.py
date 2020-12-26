@@ -32,7 +32,7 @@ def encrypt(data, password):
 
 
 def decrypt(data, password):
-    """ Decrypts the data given by the user """
+    """ Desencripta los datos dados por el usuario """
 
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
@@ -49,7 +49,7 @@ def decrypt(data, password):
 
 
 def decrypt_bkp(data, password):
-    """ Decrypts the data given by the user """
+    """ Desencripta la base de datos """
 
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
@@ -74,7 +74,7 @@ def mnemotecnica():
     with open("words.txt", "r") as texto:
         palabras = texto.read().split("\n")
 
-    for i in range(0, 9):
+    for _ in range(0, 9):
         palabra += f"{choice(palabras)}-"
 
     return palabra[0:-1]
@@ -83,7 +83,7 @@ def mnemotecnica():
 def generador():
     password = ""
     data = ascii_letters + digits + punctuation
-    for i in range(0, 12):
+    for _ in range(0, 12):
         password += choice(data)
 
     return password
