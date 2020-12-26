@@ -5,7 +5,7 @@ from getpass import getpass
 from os import system, path
 
 # Modulos externos (pip install)
-from crypto import mnemotecnica, encrypt
+from modules.crypto import mnemotecnica, encrypt
 from colorama import init, Fore
 import pyperclip
 
