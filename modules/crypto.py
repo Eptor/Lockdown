@@ -5,6 +5,8 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from random import choice
 from string import ascii_letters, digits, punctuation
+from os import getcwd
+from pathlib import Path
 
 # The base process was grabbed from the Docs:
 # https://cryptography.io/en/latest/fernet/#using-passwords-with-fernet
@@ -71,7 +73,7 @@ def mnemotecnica():
 
     palabra = ""
 
-    with open("words.txt", "r") as texto:
+    with open(Path(f"{getcwd()}/words.txt"), "r") as texto:
         palabras = texto.read().split("\n")
 
     for _ in range(0, 9):

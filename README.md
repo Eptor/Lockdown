@@ -46,7 +46,7 @@ Para acceder a la funcion de recovery deberás:
 
 - d) Seguir las instrucciones
 
-## Versiones
+## Actualizaciones
 
 ### v1.0 (08/11/2020)
  - Primer version
@@ -55,6 +55,8 @@ Para acceder a la funcion de recovery deberás:
  - Respaldo
  - Generador de contraseñas
 
+### Ejecutable (Windows)
+ - Se añadieron los archivos Lockdown.exe e install.exe
 ## License
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)

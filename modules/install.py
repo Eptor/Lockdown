@@ -5,7 +5,7 @@ from getpass import getpass
 from os import system, path
 
 # Modulos externos (pip install)
-from modules.crypto import mnemotecnica, encrypt
+from crypto import mnemotecnica, encrypt
 from colorama import init, Fore
 import pyperclip
 
@@ -17,9 +17,10 @@ def install():
         "database/data.sqlite"
     ):  # Verificar si ya existe una instalación
         print("Ya existe una instalación.")
-        quit()
 
     else:
+        system("mkdir database")
+        system("fsutil file createnew database\data.sqlite 0")
         system("cls")
         print(Fore.CYAN + "Bienvenido a la instalación de Lockdown!")
         print("\nVamos a comenzar\n")
@@ -74,6 +75,7 @@ def install():
 
             if passwd != passw2:
                 print("Las contraseñas no coinciden")
+                sleep(1)
                 system("cls")
                 continue
 
@@ -82,7 +84,7 @@ def install():
 
         # Creacion de la clave mnemotecnica
         print("Ahora vamos a crear tu clave mnemotécnica.")
-        sleep(3)
+        sleep(2)
         print(
             f"\nEsta servirá para recuperar tu cuenta en caso de que olvides tu contraseña, por lo que es de suma importancia que {Fore.RED+'NO LA PIERDAS'}."
         )
@@ -109,3 +111,7 @@ def install():
         conn.commit()
 
         print(Fore.CYAN + "\nInstalación completada!")
+
+
+if __name__ == "__main__":
+    install()

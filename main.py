@@ -1,8 +1,9 @@
 #! D:\Programacion\Lockdown\env\Scripts\python
-# Este es mi ambiente virtual, eres libre de eliminar estas lineas.
+#!!! Este ^^ es mi ambiente virtual, eres libre de eliminar estas lineas.
 
 # Modulos locales
 from modules.crypto import encrypt, decrypt, decrypt_bkp, generador
+from modules.install import install
 from modules.data_handler import (
     get_user_data,
     get_user_passwords,
@@ -12,7 +13,6 @@ from modules.data_handler import (
     recovery,
     edit_data,
 )
-from modules.install import install
 
 # Modulos vanila
 import os
@@ -79,7 +79,10 @@ def main():
                     "database/data_backup.lockdown", "rb"
                 ) as data_read:  # Leer bytes del archivo para desencriptado
                     data = decrypt_bkp(
-                        data_read.read(), input("Clave mnemotécnica\n> ")
+                        data_read.read(),
+                        input(
+                            "Clave mnemotécnica con la que se creó el backup\n> "
+                        ),
                     )
 
                 with open(
@@ -119,6 +122,13 @@ def main():
                 except IndexError:
                     print(Fore.RED + "\nNo existen registros con ese nombre !")
                     sleep(2)
+
+                except:
+                    print(
+                        Fore.RED
+                        + "La contraseña con la que se encriptaron los datos es otra."
+                    )
+
                 else:
                     table.field_names = [
                         "Nombre",
@@ -142,6 +152,11 @@ def main():
                         )
                     except KeyboardInterrupt:
                         pyperclip.copy(decrypt(data[2], key))
+                        print(
+                            Fore.MAGENTA
+                            + "\nContraseña copiada al portapapeles !"
+                        )
+                        sleep(1)
                     else:
                         del table
 
@@ -201,7 +216,8 @@ def main():
                     "database/data.sqlite", "rb"
                 ) as data_read:  # Leer los bytes del archivo para encriptarlos
                     data = encrypt(
-                        data_read.read(), input("Clave mnemotécnica\n> ")
+                        data_read.read(),
+                        input("Clave mnemotécnica\n> "),
                     )
 
                 with open(
@@ -210,7 +226,11 @@ def main():
                     data_write.write(data.encode())
 
                 print("Completado.")
-                sleep(2)
+                print(
+                    Fore.RED
+                    + "\nPara utilizar este backup, la cuenta en la que lo utilices debe tener la misma contraseña que tienes ahora,"
+                )
+                sleep(5)
 
             else:
                 pass
