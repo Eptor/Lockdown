@@ -4,15 +4,6 @@
 # Modulos locales
 from modules.crypto import encrypt, decrypt, decrypt_bkp, generador
 from modules.install import install
-from modules.data_handler import (
-    get_user_data,
-    get_user_passwords,
-    insert_data,
-    get_password_data,
-    delete_data,
-    recovery,
-    edit_data,
-)
 
 # Modulos vanila
 import os
@@ -52,6 +43,16 @@ def menu():
 
 
 def main():
+    from modules.data_handler import (
+        get_user_data,
+        get_user_passwords,
+        insert_data,
+        get_password_data,
+        delete_data,
+        recovery,
+        edit_data,
+    )
+
     # Login
     while True:
         os.system("cls")

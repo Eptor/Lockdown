@@ -17,11 +17,9 @@ def install():
         "database/data.sqlite"
     ):  # Verificar si ya existe una instalación
         print("Ya existe una instalación.")
+        return True
 
     else:
-        system("mkdir database")
-        system("fsutil file createnew database\data.sqlite 0")
-        system("cls")
         print(Fore.CYAN + "Bienvenido a la instalación de Lockdown!")
         print("\nVamos a comenzar\n")
         sleep(1)
@@ -111,6 +109,7 @@ def install():
         conn.commit()
 
         print(Fore.CYAN + "\nInstalación completada!")
+        return True
 
 
 if __name__ == "__main__":
