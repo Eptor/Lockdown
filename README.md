@@ -55,7 +55,7 @@ Para acceder a la funcion de recovery deberás:
  - Respaldo
  - Generador de contraseñas
 
-### Ejecutable (Windows)
+### Ejecutable para Windows (25/12/2020)
  - Se añadieron los archivos Lockdown.exe e install.exe
 ## License
 
