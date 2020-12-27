@@ -239,7 +239,7 @@ if __name__ == "__main__":
             delete_data,
             recovery,
             edit_data,
-        )
+        )  # Evita que se cree la base de datos antes de instalar
 
         main()
     else:
