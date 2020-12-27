@@ -44,7 +44,17 @@ Para acceder a la funcion de recovery deberás:
 
 - c) Presionar Enter
 
-- d) Seguir las instrucciones
+- d) Introducir tu mnemotécnica
+
+## Tienes un backup que quieres restaurar?
+
+En el inicio de sesión has lo siguiente:
+
+- a) En usuario escribir "backup"
+
+- b) Dejar la contraseña en blanco
+
+- c) Introduce la contraseña
 
 ## Actualizaciones
 
@@ -55,8 +65,10 @@ Para acceder a la funcion de recovery deberás:
  - Respaldo
  - Generador de contraseñas
 
-### Ejecutable para Windows (25/12/2020)
- - Se añadieron los archivos Lockdown.exe e install.exe
+### V2.0 (27/12/2020)
+ - Errores corregidos
+ - Backup se hace con la contraseña y no con la clave mnemotécnica
+ - La clave mnemotécnica es de solo 3 palabras en lugar de 9
 ## License
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)

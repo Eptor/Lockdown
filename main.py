@@ -43,16 +43,6 @@ def menu():
 
 
 def main():
-    from modules.data_handler import (
-        get_user_data,
-        get_user_passwords,
-        insert_data,
-        get_password_data,
-        delete_data,
-        recovery,
-        edit_data,
-    )
-
     # Login
     while True:
         os.system("cls")
@@ -70,9 +60,7 @@ def main():
                 )
                 input("Presiona enter para continuar")
 
-            elif (
-                user == "help" and key == "backup"
-            ):  # Usar nueva base de datos
+            elif user == "backup" and key == "":  # Usar nueva base de datos
 
                 print(Fore.YELLOW + "Espera mientras leemos el archivo")
 
@@ -81,9 +69,7 @@ def main():
                 ) as data_read:  # Leer bytes del archivo para desencriptado
                     data = decrypt_bkp(
                         data_read.read(),
-                        input(
-                            "Clave mnemotécnica con la que se creó el backup\n> "
-                        ),
+                        input("Clave con la que se creó el backup\n> "),
                     )
 
                 with open(
@@ -213,12 +199,14 @@ def main():
                 os.system("cls")
                 print(Fore.YELLOW + "Espera a que realicemos el backup")
 
+                sleep(1)
+
                 with open(
                     "database/data.sqlite", "rb"
                 ) as data_read:  # Leer los bytes del archivo para encriptarlos
                     data = encrypt(
                         data_read.read(),
-                        input("Clave mnemotécnica\n> "),
+                        key,
                     )
 
                 with open(
@@ -226,12 +214,9 @@ def main():
                 ) as data_write:  # Escribe los bytes encriptados en un nuevo archivo
                     data_write.write(data.encode())
 
-                print("Completado.")
-                print(
-                    Fore.RED
-                    + "\nPara utilizar este backup, la cuenta en la que lo utilices debe tener la misma contraseña que tienes ahora,"
-                )
-                sleep(5)
+                print("\nCompletado.")
+                print(Fore.RED + "\nEl backup se encriptó con tu contraseña.")
+                sleep(3)
 
             else:
                 pass
@@ -246,6 +231,16 @@ def main():
 
 if __name__ == "__main__":
     if os.path.isfile("database/data.sqlite"):
+        from modules.data_handler import (
+            get_user_data,
+            get_user_passwords,
+            insert_data,
+            get_password_data,
+            delete_data,
+            recovery,
+            edit_data,
+        )
+
         main()
     else:
         install()

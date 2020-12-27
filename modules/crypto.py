@@ -76,8 +76,8 @@ def mnemotecnica():
     with open(Path(f"{getcwd()}/words.txt"), "r") as texto:
         palabras = texto.read().split("\n")
 
-    for _ in range(0, 9):
-        palabra += f"{choice(palabras)}-"
+    for _ in range(0, 3):
+        palabra += f"{choice(palabras)} "
 
     return palabra[0:-1]
 
@@ -92,4 +92,4 @@ def generador():
 
 
 if __name__ == "__main__":
-    generador()
+    print(mnemotecnica())
