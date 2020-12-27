@@ -17,6 +17,8 @@ pip install -r requirements.txt
 
 Instalar base de datos
 
+El proceso de instalación empieza automaticamente si no se encuentra una base de datos, pero si deseas instalarla manualmente puedes utilizar:
+
 ```sh
 modules/install.py
 ```
