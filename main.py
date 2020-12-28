@@ -38,7 +38,7 @@ def menu():
     print("4) - Modificar registro")
     print("5) - Generador")
 
-    print("\nBKP) - Crear respaldo")
+    print("\nbkp) - Crear respaldo")
     print("\nCTRL + C) - Salir\n")
 
 
@@ -188,14 +188,25 @@ def main():
                 os.system("cls")
                 print(Fore.YELLOW + "Vamos a generarte una contraseña nueva !")
                 sleep(1)
-                password = generador()
-                print("\nTu contraseña es:", Fore.MAGENTA + password)
-                sleep(1)
-                pyperclip.copy(password)
-                print(Fore.CYAN + "\nLa copiamos a tu portapapeles !")
-                sleep(2)
+                tipo = int(input("1) - Con simbolos\n2) - Sin simbolos\n> "))
+                try:
+                    longitud = int(input("Longitud (12 - default)\n> "))
+                except ValueError:
+                    print(Fore.YELLOW + "Usando 12 como valor.")
+                    sleep(0.5)
+                    longitud = 12
+                password = generador(tipo, longitud)
+                if password is not False:
+                    print("\nTu contraseña es:", Fore.MAGENTA + password)
+                    sleep(1)
+                    pyperclip.copy(password)
+                    print(Fore.CYAN + "\nLa copiamos a tu portapapeles !")
+                    sleep(2)
+                else:
+                    print("\nLa opcion introducida no es correcta.")
+                    sleep(1)
 
-            elif om == "BKP":  # Respaldo
+            elif om.lower() == "bkp":  # Respaldo
                 os.system("cls")
                 print(Fore.YELLOW + "Espera a que realicemos el backup")
 
@@ -227,6 +238,18 @@ def main():
         sleep(1)
         print("\nSaliendo.")
         sleep(1)
+
+    except Exception as e:
+        os.system("cls")
+        print(Fore.RED + "Ocurrio un error inesperado!")
+        sleep(1)
+        print(
+            "Por favor abre un issue en nuestro repositorio de Github",
+            Fore.CYAN + "(https://github.com/Eptor/Lockdown)",
+        )
+        sleep(1)
+        print("\nEl error es:")
+        print("\n\n", e)
 
 
 if __name__ == "__main__":

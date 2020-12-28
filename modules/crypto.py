@@ -82,10 +82,16 @@ def mnemotecnica():
     return palabra[0:-1]
 
 
-def generador():
+def generador(tipo, longitud):
     password = ""
-    data = ascii_letters + digits + punctuation
-    for _ in range(0, 12):
+    if tipo == 1:
+        data = ascii_letters + digits + punctuation
+    elif tipo == 2:
+        data = ascii_letters + digits
+    else:
+        return False
+
+    for _ in range(0, longitud):
         password += choice(data)
 
     return password
