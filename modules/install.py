@@ -17,7 +17,6 @@ def install():
         "database/data.sqlite"
     ):  # Verificar si ya existe una instalación
         print("Ya existe una instalación.")
-        return True
 
     else:
         print(Fore.CYAN + "Bienvenido a la instalación de Lockdown!")
