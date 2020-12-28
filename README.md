@@ -29,7 +29,7 @@ modules/install.py
 Lockdown utiliza el metodo de encriptado Fernet, el cual es un metodo de encriptado simetrico, por lo que tus contraseñas están seguras.
 
 
-![](https://media.giphy.com/media/TUeaUjG3tOkffSkw6O/giphy.gif)
+![](https://media.giphy.com/media/ZDsfjbNJqpzX7FDIaj/giphy.gif)
 
 Y asi está el texto en la base de datos
 
@@ -71,6 +71,11 @@ En el inicio de sesión has lo siguiente:
  - Errores corregidos
  - Backup se hace con la contraseña y no con la clave mnemotécnica
  - La clave mnemotécnica es de solo 3 palabras en lugar de 9
+
+### Pequeña actualización #1 (27/12/2020)
+ - La generación de contraseña puede ser con o sin simbolos
+ - Puedes elegir la longitud de la contraseña generada
+
 ## License
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
