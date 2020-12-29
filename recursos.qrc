@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="background">
+    <file>img/blurred_background.jpg</file>
+  </qresource>
+  <qresource prefix="logo">
+    <file>img/lockdown.png</file>
+  </qresource>
+</RCC>

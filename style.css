@@ -1,0 +1,9 @@
+QMessageBox,
+QInputDialog,
+QFileDialog {
+  background-color: #545e75;
+}
+
+QPushButton {
+  background-color: rgba(243, 201, 139, 90);
+}

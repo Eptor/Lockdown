@@ -5,41 +5,74 @@
 from modules.crypto import encrypt, decrypt, decrypt_bkp, generador
 from modules.install import install
 
+# Ventanas
+from windows.login import Ui_login_window
+
 # Modulos vanila
 import os
 from time import sleep
 from getpass import getpass
+import sys
 
 # Modulos externos (pip install)
 from colorama import init, Fore
 from prettytable import PrettyTable, from_db_cursor
 import pyperclip
+from PySide2.QtWidgets import (
+    QApplication,
+    QMainWindow,
+    QMessageBox,
+    QInputDialog,
+    QFileDialog,
+)
 
 init(autoreset=True)  # Colorama init
 
 
-def menu():
-    os.system("cls")
-    print(
-        Fore.CYAN
-        + """
- __        ______     ______  __  ___  _______   ______   ____    __    ____ .__   __.
-|  |      /  __  \   /      ||  |/  / |       \ /  __  \  \   \  /  \  /   / |  \ |  |
-|  |     |  |  |  | |  ,----'|  '  /  |  .--.  |  |  |  |  \   \/    \/   /  |   \|  |
-|  |     |  |  |  | |  |     |    <   |  |  |  |  |  |  |   \            /   |  . `  |
-|  `----.|  `--'  | |  `----.|  .  \  |  '--'  |  `--'  |    \    /\    /    |  |\   |
-|_______| \______/   \______||__|\__\ |_______/ \______/      \__/  \__/     |__| \__| v2.0
-    """
-    )
-    print(from_db_cursor(get_user_passwords()))  # Generador de la tabla
-    print("\n1) - Ver registro")
-    print("2) - Añadir registro")
-    print("3) - Eliminar registro")
-    print("4) - Modificar registro")
-    print("5) - Generador")
+class login_window_class(QMainWindow, Ui_login_window):
+    """ Ventana de login """
 
-    print("\nbkp) - Crear respaldo")
-    print("\nCTRL + C) - Salir\n")
+    def __init__(self, *args, **kwargs):
+        QMainWindow.__init__(self, *args, **kwargs)
+        self.setupUi(self)
+
+        self.login.clicked.connect(self.verify)
+        self.actionOlvid_mi_contrase_a.triggered.connect(self.text_input)
+
+    def verify(self):
+        user = self.user_input.text()
+        key = self.password_input.text()
+        try:
+            if key == decrypt(get_user_data(user), key):
+                print("ª")
+                self.close()
+        except:
+            QMessageBox.warning(
+                self, "Advertencia", "Los datos introducidos son incorrectos"
+            )
+
+    def text_input(self):
+        path = QFileDialog.getOpenFileName(
+            self, "Archivo lockdown", None, "Lockdown (*.lockdown)"
+        )[0]
+
+        clave, ok = QInputDialog.getText(
+            self,
+            "Clave",
+            "Introuce la contraseña con la que se encriptó este backup",
+        )
+        if ok:
+            with open(
+                path, "rb"
+            ) as data_read:  # Leer bytes del archivo para desencriptado
+                data = decrypt_bkp(
+                    data_read.read(),
+                    clave,
+                )
+
+            # Sobre-escribir la base de datos actual con la nueva
+            with open("database/data.sqlite", "wb") as data_write:
+                data_write.write(data)
 
 
 def main():
@@ -264,7 +297,11 @@ if __name__ == "__main__":
             edit_data,
         )  # Evita que se cree la base de datos antes de instalar
 
-        main()
+        app = QApplication(sys.argv)
+        app.setStyleSheet(open("style.css").read())
+        login = login_window_class()
+        login.show()
+        sys.exit(app.exec_())
     else:
         print("No se ha encontrado una base de datos!")
         print(Fore.CYAN + "Empezando la instalación")
