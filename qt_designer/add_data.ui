@@ -55,6 +55,14 @@
      <height>30</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: transparent;
+border: 1px solid white;
+border-radius: 10px;color:whitesmoke;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLineEdit" name="email">
    <property name="geometry">
@@ -64,6 +72,14 @@
      <width>381</width>
      <height>30</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: transparent;
+border: 1px solid white;
+border-radius: 10px;color:whitesmoke;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QLineEdit" name="password">
@@ -75,6 +91,14 @@
      <height>30</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: transparent;
+border: 1px solid white;
+border-radius: 10px;color:whitesmoke;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLineEdit" name="link">
    <property name="geometry">
@@ -85,6 +109,14 @@
      <height>30</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: transparent;
+border: 1px solid white;
+border-radius: 10px;color:whitesmoke;</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -94,6 +126,9 @@
      <width>380</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: whitesmoke;</string>
    </property>
    <property name="text">
     <string>Nombre</string>
@@ -108,6 +143,9 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: whitesmoke;</string>
+   </property>
    <property name="text">
     <string>Email</string>
    </property>
@@ -120,6 +158,9 @@
      <width>70</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: whitesmoke;</string>
    </property>
    <property name="text">
     <string>Contraseña</string>
@@ -134,10 +175,39 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">color: whitesmoke;</string>
+   </property>
    <property name="text">
     <string>Link</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>401</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-image: url(:/background/img/blurred_background.jpg);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>label_5</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>nombre</zorder>
+  <zorder>email</zorder>
+  <zorder>password</zorder>
+  <zorder>link</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_4</zorder>
  </widget>
  <resources>
   <include location="../recursos.qrc"/>
