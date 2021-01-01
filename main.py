@@ -275,6 +275,6 @@ if __name__ == "__main__":
         sys.exit(app.exec_())
     else:
         print("No se ha encontrado una base de datos!")
-        print(Fore.CYAN + "Empezando la instalación")
+        print("Empezando la instalación")
         os.system("cls")
         install()
