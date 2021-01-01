@@ -60,5 +60,3 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 - Imagen blurr: [ianbarnard.co.uk](http://www.ianbarnard.co.uk/wp-content/uploads/2013/09/free-blurred-web-backgrounds-09.jpg)
 - Icono sacado de: [iconscout](https://iconscout.com/icon/lockdown-2318925), fue creado por [Nithinan Tatah](https://iconscout.com/contributors/nithinan-tatah)
 - Icono copiar: [iconscout](https://iconscout.com/icon/copy-197)
-- Paleta de colores creada en: [coolors](www.coolors.co). La puedes encontrar [aquí](https://coolors.co/545e75-f3c98b-a7cced-e16f7c-ffb2e6)
-  ![](etc/Paleta_de_colores.png)
