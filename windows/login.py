@@ -12,7 +12,7 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
-import recursos_rc
+import recursos
 
 class Ui_login_window(object):
     def setupUi(self, login_window):
