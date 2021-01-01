@@ -17,7 +17,7 @@
    <iconset resource="../recursos.qrc">
     <normaloff>:/logo/img/lockdown.png</normaloff>:/logo/img/lockdown.png</iconset>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="centralwidget_login">
    <property name="layoutDirection">
     <enum>Qt::LeftToRight</enum>
    </property>

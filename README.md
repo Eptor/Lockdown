@@ -22,11 +22,13 @@ El proceso de instalación empieza automaticamente si no se encuentra una base d
 modules/install.py
 ```
 
+Nota: La instalación sigue siendo aplicación de terminal, aun no hay una GUI creada.
+
 ## Que tan seguro es?
 
 Lockdown utiliza el metodo de encriptado Fernet, el cual es un metodo de encriptado simetrico, por lo que tus contraseñas están seguras.
 
-![](https://media.giphy.com/media/ZDsfjbNJqpzX7FDIaj/giphy.gif)
+![](etc/datos.png)
 
 Y asi está el texto en la base de datos
 
@@ -35,47 +37,17 @@ Y asi está el texto en la base de datos
 ## Olvidaste tu contraseña?
 
 No te preocupes, al instalar la base de datos, se te genera una clave mnemotécnica para utilizar en caso de un recovery necesario.
-Para acceder a la funcion de recovery deberás:
-
-- a) En usuario escribir "help"
-
-- b) Dejar la contraseña en blanco
-
-- c) Presionar Enter
-
-- d) Introducir tu mnemotécnica
+Para acceder a la funcion de recovery deberás seleccionar Opciones en la ventana del login y seguir las instrucciones.
 
 ## Tienes un backup que quieres restaurar?
 
-En el inicio de sesión has lo siguiente:
-
-- a) En usuario escribir "backup"
-
-- b) Dejar la contraseña en blanco
-
-- c) Introduce la contraseña
+Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en la ventana de login para seguir las instrucciones.
 
 ## Actualizaciones
 
-### v1.0 (08/11/2020)
+### v1.0 (31/12/2020)
 
 - Primer version
-
-### V1.5 (9/11/2020)
-
-- Respaldo
-- Generador de contraseñas
-
-### V2.0 (27/12/2020)
-
-- Errores corregidos
-- Backup se hace con la contraseña y no con la clave mnemotécnica
-- La clave mnemotécnica es de solo 3 palabras en lugar de 9
-
-### Pequeña actualización #1 (27/12/2020)
-
-- La generación de contraseña puede ser con o sin simbolos
-- Puedes elegir la longitud de la contraseña generada
 
 ## License
 
@@ -85,6 +57,8 @@ En el inicio de sesión has lo siguiente:
 
 ## Creditos
 
-- Fondo del login sacado de: [ianbarnard.co.uk](http://www.ianbarnard.co.uk/wp-content/uploads/2013/09/free-blurred-web-backgrounds-09.jpg)
+- Imagen blurr: [ianbarnard.co.uk](http://www.ianbarnard.co.uk/wp-content/uploads/2013/09/free-blurred-web-backgrounds-09.jpg)
 - Icono sacado de: [iconscout](https://iconscout.com/icon/lockdown-2318925), fue creado por [Nithinan Tatah](https://iconscout.com/contributors/nithinan-tatah)
+- Icono copiar: [iconscout](https://iconscout.com/icon/copy-197)
 - Paleta de colores creada en: [coolors](www.coolors.co). La puedes encontrar [aquí](https://coolors.co/545e75-f3c98b-a7cced-e16f7c-ffb2e6)
+  ![](etc/Paleta_de_colores.png)

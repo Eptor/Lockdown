@@ -1,4 +1,4 @@
-#! D:\Programacion\Lockdown\env\Scripts\python
+#! D:\Programacion\Lockdown\venv\Scripts\python
 #!!! Este ^^ es mi ambiente virtual, eres libre de eliminar estas lineas.
 
 # Modulos locales
@@ -7,6 +7,9 @@ from modules.install import install
 
 # Ventanas
 from windows.login import Ui_login_window
+from windows.menu import Ui_menu_window
+from windows.datos_popup import Ui_data_popup
+from windows.add_data import Ui_add_data
 
 # Modulos vanila
 import os
@@ -15,8 +18,6 @@ from getpass import getpass
 import sys
 
 # Modulos externos (pip install)
-from colorama import init, Fore
-from prettytable import PrettyTable, from_db_cursor
 import pyperclip
 from PySide2.QtWidgets import (
     QApplication,
@@ -24,9 +25,9 @@ from PySide2.QtWidgets import (
     QMessageBox,
     QInputDialog,
     QFileDialog,
+    QListWidgetItem
 )
-
-init(autoreset=True)  # Colorama init
+from PySide2.QtCore import Qt
 
 
 class login_window_class(QMainWindow, Ui_login_window):
@@ -37,21 +38,40 @@ class login_window_class(QMainWindow, Ui_login_window):
         self.setupUi(self)
 
         self.login.clicked.connect(self.verify)
-        self.actionOlvid_mi_contrase_a.triggered.connect(self.text_input)
+        self.actionOlvid_mi_contrase_a.triggered.connect(self.recovery_popup)
+        self.actionRestaurar_base_de_datos.triggered.connect(self.backup_popup)
 
     def verify(self):
+        global key
+
         user = self.user_input.text()
         key = self.password_input.text()
         try:
             if key == decrypt(get_user_data(user), key):
-                print("ª")
+                self.menu = menu_window_class()
+                self.menu.show()
                 self.close()
-        except:
+        except Exception as e:
             QMessageBox.warning(
-                self, "Advertencia", "Los datos introducidos son incorrectos"
+                self, "Advertencia", f"Ocurrió el siguiente error:\n{e}"
             )
 
-    def text_input(self):
+    def recovery_popup(self):
+        user = self.user_input.text()
+        if user != "":
+            clave, ok = QInputDialog.getText(
+                self,
+                "Clave",
+                "Introuce tu clave mnemotécnica",
+            )
+
+            if ok:
+                QMessageBox.information(
+                    self, "Recovery", f"Tu contraseña es: {decrypt(recovery(user), clave)}")
+        else:
+            QMessageBox.warning(self, "Error", "Primero introduce tu usuario")
+
+    def backup_popup(self):
         path = QFileDialog.getOpenFileName(
             self, "Archivo lockdown", None, "Lockdown (*.lockdown)"
         )[0]
@@ -73,6 +93,167 @@ class login_window_class(QMainWindow, Ui_login_window):
             # Sobre-escribir la base de datos actual con la nueva
             with open("database/data.sqlite", "wb") as data_write:
                 data_write.write(data)
+
+
+class add_data_class(QMainWindow, Ui_add_data):
+    def __init__(self, mode, *args, **kwargs):
+        QMainWindow.__init__(self, *args, **kwargs)
+        self.setupUi(self)
+
+        if mode == 1:
+            self.aceptar.clicked.connect(self.add)
+        elif mode == 2:
+            QMessageBox.information(
+                self, "Atención", "Deja en blanco los campos que no deseas editar")
+            self.label.setText("Nombre del registro a editar")
+            self.aceptar.clicked.connect(self.edit)
+
+        self.cancelar.clicked.connect(lambda: self.close())
+
+    def add(self):
+        try:
+            insert_data(self.nombre.text(), encrypt(self.email.text(), key), encrypt(
+                self.password.text(), key), self.link.text())
+        except Exception as e:
+            QMessageBox.warning(
+                self, "Error", f"Ocurrio el siguiente error:\n{e}")
+        else:
+            QMessageBox.information(
+                self, "Completado", f"{self.nombre.text()} se ha añadido")
+
+        menu_window_class().update()
+
+    def edit(self):
+        registro = self.nombre.text()
+        try:
+            data = get_password_data(registro)
+        except IndexError:
+            QMessageBox.warning(
+                self, "Error", "No existen registros con ese nombre")
+        else:
+            if self.nombre.text() == "":
+                nombre = data[0]
+            else:
+                nombre = self.nombre.text()
+
+            if self.email.text() == "":
+                email = data[1]
+            else:
+                email = encrypt(self.email.text(), key)
+
+            if self.password == "":
+                contraseña = data[2]
+            else:
+                contraseña = encrypt(self.password.text(), key)
+
+            if self.link.text() == "":
+                link = data[3]
+            else:
+                link = self.link.text()
+
+            try:
+                edit_data(nombre, email, contraseña, link, registro)
+            except Exception as e:
+                QMessageBox.warning(
+                    self, "Error", f"Ocurrió el siguiente error:\n{e}")
+            else:
+                QMessageBox.information(
+                    self, "Completado", f"{registro} se editó correctamente")
+                self.close()
+
+
+class datos_popup_class(QMainWindow, Ui_data_popup):
+    def __init__(self, *args, **kwargs):
+        QMainWindow.__init__(self, *args, **kwargs)
+        self.setupUi(self)
+        self.show_data()
+
+        self.ok.clicked.connect(lambda: self.close())
+        self.copiar_c.clicked.connect(self.copiar_contraseña)
+        self.copiar_l.clicked.connect(self.copiar_link)
+
+    def copiar_contraseña(self):
+        self.dinamica.setText("Contraseña copiada!")
+        pyperclip.copy(decrypt(data[2], key))
+
+    def copiar_link(self):
+        self.dinamica.setText("Link copiado!")
+        pyperclip.copy(data[3])
+
+    def show_data(self):
+        self.nombre.setText(f"Nombre: {data[0]}")
+        self.email.setText(f"Correo: {decrypt(data[1], key)}")
+        self.password.setText(f"Contraseña: {decrypt(data[2], key)}")
+        self.link.setText(f"Link: {data[3]}")
+
+
+class menu_window_class(QMainWindow, Ui_menu_window):
+    def __init__(self, *args, **kwargs):
+        QMainWindow.__init__(self, *args, **kwargs)
+        self.setupUi(self)
+        self.gen_tipo = None
+        self.update()
+
+        self.tipo.stateChanged.connect(self.update_tipo)
+        self.generar.clicked.connect(self.generar_password)
+        self.copiar.clicked.connect(self.copiar_gen)
+        self.add.clicked.connect(self.añadir_registro)
+        self.ver.clicked.connect(self.ver_registro)
+        self.editar.clicked.connect(self.editar_registro)
+        self.eliminar.clicked.connect(self.eliminar_registro)
+
+    def update(self):
+        self.listWidget.clear()
+        self.listWidget.addItem("")
+        for x in get_user_passwords():
+            y = QListWidgetItem(x[0])
+            y.setTextAlignment(Qt.AlignHCenter)
+            self.listWidget.addItem(y)
+
+        self.listWidget.addItem("")
+
+    def copiar_gen(self):
+        pyperclip.copy(self.gen_text.text())
+        self.gen_text.setText("Contraseña copiada!")
+
+    def update_tipo(self, state):
+        self.gen_tipo = state
+
+    def generar_password(self):
+        self.gen_text.clear()
+        if Qt.Checked == self.gen_tipo:
+            temp = generador(1)
+        else:
+            temp = generador(2)
+        self.gen_text.setText(temp)
+        del temp
+
+    def ver_registro(self):
+        global data
+        data = get_password_data(str(self.listWidget.currentItem().text()))
+        self.popup = datos_popup_class()
+        self.popup.show()
+
+    def añadir_registro(self):
+        self.popup_data = add_data_class(mode=1)
+        self.popup_data.show()
+
+    def editar_registro(self):
+        self.popup_edit = add_data_class(mode=2)
+        self.popup_edit.show()
+
+    def eliminar_registro(self):
+        registro = str(self.listWidget.currentItem().text())
+        try:
+            delete_data(registro)
+        except Exception as e:
+            QMessageBox.warning(
+                self, "Error", f"Ocurrió el siguiente error:\n{e}")
+        else:
+            QMessageBox.information(self, "Compeltado",
+                                    f"{registro} se eliminó de la base de datos")
+
+            self.update()
 
 
 def main():

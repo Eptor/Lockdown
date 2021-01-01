@@ -13,7 +13,6 @@ init(autoreset=True)  # Colorama init
 
 
 def get_user_data(entry):
-
     """ Consigue la contraseña del usuario especificado """
 
     cursor.execute(f"SELECT password FROM users WHERE user = '{entry}'")
@@ -22,21 +21,15 @@ def get_user_data(entry):
 
 
 def get_user_passwords():
-
     """ Consigue los nombres de contraseñas disponibles """
 
-    return cursor.execute("SELECT Nombre FROM data")
+    cursor.execute("SELECT Nombre FROM data")
+    return cursor.fetchall()
 
 
-def insert_data(key):
-
+def insert_data(nombre, email, contraseña, link):
     """ Agrega registros a la base de datos """
 
-    print(Fore.YELLOW + "Vamos a agregar un registro nuevo!\n")
-    nombre = input("Nombre: ")
-    email = encrypt(input("E-mail: "), key)
-    contraseña = encrypt(input("Contraseña: "), key)
-    link = input("Link: ")
     cursor.execute(
         f"INSERT INTO data VALUES ('{nombre}','{email}','{contraseña}','{link}')"
     )
@@ -44,7 +37,6 @@ def insert_data(key):
 
 
 def get_password_data(nombre):
-
     """ Consigue los datos de la contraseña seleccionada """
 
     cursor.execute(f"SELECT * FROM data WHERE Nombre = '{nombre}'")
@@ -52,27 +44,14 @@ def get_password_data(nombre):
     return data
 
 
-def delete_data():
-
+def delete_data(nombre):
     """ Elimina la contraseña seleccionada """
 
-    nombre = input("Nombre: ")
-    confirmacion = input(
-        f"Seguro que quires eliminar {nombre} de tus registros? (y/n)\n> "
-    )
-    try:
-        if confirmacion.lower() == "y":
-            cursor.execute(f"DELETE FROM data WHERE Nombre = '{nombre}'")
-    except Exception as e:
-        print(e)
-        return False
-    else:
-        conn.commit()
-        return True
+    cursor.execute(f"DELETE FROM data WHERE Nombre = '{nombre}'")
+    conn.commit()
 
 
 def recovery(entry):
-
     """ Funcion para recuperar la contraseña con la clave mnemotécnica """
 
     cursor.execute(f"SELECT backup FROM users WHERE user = '{entry}'")
@@ -80,39 +59,10 @@ def recovery(entry):
     return user
 
 
-def edit_data(entry, key):
-
+def edit_data(nombre, email, contraseña, link, entry):
     """ Cambia los datos de una contraseña por unos nuevos """
 
-    try:
-        data = get_password_data(entry)
-        print(Fore.YELLOW + "\nDeja en blanco lo que no desees cambiar !\n")
-        nombre = input("Nombre: ")
-        email = input("E-mail: ")
-        contraseña = input("Contraseña: ")
-        link = input("Link: ")
-
-        if nombre == "":
-            nombre = data[0]
-
-        if email == "":
-            email = data[1]
-        else:
-            email = encrypt(email, key)
-
-        if contraseña == "":
-            contraseña = data[2]
-        else:
-            contraseña = encrypt(contraseña, key)
-
-        if link == "":
-            link = data[3]
-
-        cursor.execute(
-            f"UPDATE data SET Nombre = '{nombre}', Email = '{email}', Contraseña = '{contraseña}', Link = '{link}' WHERE Nombre = '{entry}'"
-        )
-    except Exception:
-        return False
-    else:
-        conn.commit()
-        return True
+    cursor.execute(
+        f"UPDATE data SET Nombre = '{nombre}', Email = '{email}', Contraseña = '{contraseña}', Link = '{link}' WHERE Nombre = '{entry}'"
+    )
+    conn.commit()

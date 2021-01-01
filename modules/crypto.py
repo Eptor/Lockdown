@@ -3,7 +3,7 @@ from cryptography.fernet import Fernet
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-from random import choice
+from random import choice, randint
 from string import ascii_letters, digits, punctuation
 from os import getcwd
 from pathlib import Path
@@ -68,7 +68,6 @@ def decrypt_bkp(data, password):
 
 
 def mnemotecnica():
-
     """ Generación de clave para recuperación """
 
     palabra = ""
@@ -82,8 +81,9 @@ def mnemotecnica():
     return palabra[0:-1]
 
 
-def generador(tipo, longitud):
+def generador(tipo):
     password = ""
+    longitud = randint(5, 15)
     if tipo == 1:
         data = ascii_letters + digits + punctuation
     elif tipo == 2:

@@ -1,3 +1,8 @@
+QWidget#centralwidget_login {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
 QMessageBox,
 QInputDialog,
 QFileDialog {
@@ -5,5 +10,19 @@ QFileDialog {
 }
 
 QPushButton {
+  background-color: rgba(243, 201, 139, 50);
+  border-radius: 10px;
+}
+
+QPushButton:hover {
   background-color: rgba(243, 201, 139, 90);
+  border-radius: 10px;
+}
+
+/* QListWidget {
+  color: #545e75;
+} */
+
+QLineEdit#gen_text {
+  color: whitesmoke;
 }
