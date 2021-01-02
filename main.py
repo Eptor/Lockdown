@@ -1,6 +1,3 @@
-#! D:\Programacion\Lockdown\env\Scripts\python
-#!!! Este ^^ es mi ambiente virtual, eres libre de eliminar estas lineas.
-
 # Modulos locales
 from modules.crypto import encrypt, decrypt, decrypt_bkp, generador
 from modules.install import install
