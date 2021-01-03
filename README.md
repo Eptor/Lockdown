@@ -64,6 +64,15 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 
 - Copyright 2020 © Eptor.
 
+## Donaciones
+
+Cualquier cantidad es infinitamente agradecida ❤
+
+- Paypal: [Hector Espinoza](paypal.me/espinoza7854)
+
+- Bitcoin:
+  ![](etc/btc_qr.png)
+
 ## Creditos
 
 - Imagen blurr: [ianbarnard.co.uk](http://www.ianbarnard.co.uk/wp-content/uploads/2013/09/free-blurred-web-backgrounds-09.jpg)
