@@ -8,13 +8,15 @@ Lockdown es el sucesor espiritual de Padlock, el primer administrador de contras
 
 ## Instalación
 
-Instalar requerimientos
+### Instalar requerimientos
 
 ```sh
 pip install -r requirements.txt
 ```
 
-Instalar base de datos
+### Instalar base de datos
+
+![](etc/menu_instalacion.png)
 
 Debes de correr el archivo install.py de la siguiente manera:
 
@@ -25,9 +27,7 @@ install.py
 Se abrirá un menú dónde podrá elegir si:
 
 1. restaurar una base de datos mediante su archivo .lockdown
-2. hacer una instalación limpia.
-
-![](etc/menu_instalacion.png)
+2. hacer una instalación limpia
 
 ## Que tan seguro es?
 
