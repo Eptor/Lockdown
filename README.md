@@ -16,13 +16,14 @@ pip install -r requirements.txt
 
 Instalar base de datos
 
-El proceso de instalación empieza automaticamente si no se encuentra una base de datos, pero si deseas instalarla manualmente puedes utilizar:
+Debes de correr el archivo install.py de la siguiente manera:
 
 ```sh
-modules/install.py
+install.py
 ```
 
-Nota: La instalación sigue siendo aplicación de terminal, aun no hay una GUI creada.
+Se abrirá un menú dónde podrá elegir si restaurar una base de datos mediante su archivo .lockdown o hacer una instalación limpia.
+![](etc/menu_instalacion.png)
 
 ## Que tan seguro es?
 
@@ -48,6 +49,10 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 ### v1.0 (31/12/2020)
 
 - Primer version
+
+### V1.5 (3/01/2021)
+
+- Instalación mediante GUI
 
 ## License
 

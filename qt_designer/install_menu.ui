@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>install_menu</class>
+ <widget class="QMainWindow" name="install_menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>372</width>
+    <height>112</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Instalación</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../recursos.qrc">
+    <normaloff>:/logo/img/lockdown.png</normaloff>:/logo/img/lockdown.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-image: url(:/background/img/blurred_background.jpg);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="instalar">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>340</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: 1px solid white;
+border-radius: 10px;color:whitesmoke;</string>
+    </property>
+    <property name="text">
+     <string>INSTALAR</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="backup">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>340</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: 1px solid white;
+border-radius: 10px;color:whitesmoke;</string>
+    </property>
+    <property name="text">
+     <string>RESTAURAR BACKUP</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../recursos.qrc"/>
+ </resources>
+ <connections/>
+</ui>
