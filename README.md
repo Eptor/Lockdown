@@ -22,7 +22,11 @@ Debes de correr el archivo install.py de la siguiente manera:
 install.py
 ```
 
-Se abrirá un menú dónde podrá elegir si restaurar una base de datos mediante su archivo .lockdown o hacer una instalación limpia.
+Se abrirá un menú dónde podrá elegir si:
+
+1. restaurar una base de datos mediante su archivo .lockdown
+2. hacer una instalación limpia.
+
 ![](etc/menu_instalacion.png)
 
 ## Que tan seguro es?
