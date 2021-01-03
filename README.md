@@ -68,7 +68,7 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 
 Cualquier cantidad es infinitamente agradecida ❤
 
-- Paypal: [Hector Espinoza](paypal.me/espinoza7854)
+- Paypal: [Hector Espinoza](http://www.paypal.me/espinoza7854)
 
 - Bitcoin:
 
