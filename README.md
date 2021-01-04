@@ -79,7 +79,7 @@ En el inicio de sesión has lo siguiente:
 - La generación de contraseña puede ser con o sin simbolos
 - Puedes elegir la longitud de la contraseña generada
 
-## License
+## Licencia
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
