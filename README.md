@@ -91,4 +91,6 @@ Cualquier cantidad es infinitamente agradecida ❤
 
 - Bitcoin: 3MaZtzzJSY2Pw6v3WMu5qvzyaFstPKUX2J
 
+- Monero: 47egPTVGs3Eiq7gPYEmw6zat8dqLL8phYK61Hud937tvRbusGfd2TmUZW8eag6jb38Q3bQyKUns13SKjwHhPV4fXMnNCxxF
+
 ![](etc/btc_qr.png)
