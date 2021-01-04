@@ -2,6 +2,8 @@
 
 > Keep your data safe and locked away
 
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Eptor/Lockdown?label=Actualizaciones&style=plastic) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Eptor/Lockdown?label=Tama%C3%B1o)
+
 Lockdown es el sucesor espiritual de Padlock, el primer administrador de contraseñas que hice.
 
 ![](etc/menu.png)
