@@ -2,6 +2,9 @@
   <qresource prefix="background">
     <file>img/blurred_background.jpg</file>
   </qresource>
+  <qresource prefix="refresh">
+    <file>img/refresh.png</file>
+  </qresource>
   <qresource prefix="copiar">
     <file>img/copy.png</file>
   </qresource>

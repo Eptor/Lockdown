@@ -221,6 +221,26 @@ border-radius: 3px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="refresh">
+    <property name="geometry">
+     <rect>
+      <x>759</x>
+      <y>5</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;border-radius:0px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="../recursos.qrc">
+      <normaloff>:/refresh/img/refresh.png</normaloff>:/refresh/img/refresh.png</iconset>
+    </property>
+   </widget>
    <zorder>fondo</zorder>
    <zorder>listWidget</zorder>
    <zorder>ver</zorder>
@@ -233,6 +253,7 @@ border-radius: 3px;</string>
    <zorder>tipo</zorder>
    <zorder>add</zorder>
    <zorder>label</zorder>
+   <zorder>refresh</zorder>
   </widget>
  </widget>
  <resources>

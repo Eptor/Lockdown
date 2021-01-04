@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-# Form generated from reading UI file 'menu.ui'
+## Form generated from reading UI file 'menu.ui'
 ##
-# Created by: Qt User Interface Compiler version 5.15.2
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
-# WARNING! All changes made in this file will be lost when recompiling UI file!
+## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
 from PySide2.QtCore import *
@@ -21,8 +21,8 @@ class Ui_menu_window(object):
             menu_window.setObjectName(u"menu_window")
         menu_window.resize(800, 407)
         icon = QIcon()
-        icon.addFile(u":/logo/img/lockdown.png",
-                     QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/logo/img/lockdown.png", QSize(), QIcon.Normal,
+                     QIcon.Off)
         menu_window.setWindowIcon(icon)
         self.centralwidget_menu = QWidget(menu_window)
         self.centralwidget_menu.setObjectName(u"centralwidget_menu")
@@ -31,9 +31,10 @@ class Ui_menu_window(object):
         self.listWidget.setObjectName(u"listWidget")
         self.listWidget.setGeometry(QRect(249, 30, 541, 280))
         self.listWidget.setLayoutDirection(Qt.LeftToRight)
-        self.listWidget.setStyleSheet(u"border: 2px dotted rgb(255, 178, 230);\n"
-                                      "background: rgba(167, 204, 237, 30);\n"
-                                      "border-radius: 10px;")
+        self.listWidget.setStyleSheet(
+            u"border: 2px dotted rgb(255, 178, 230);\n"
+            "background: rgba(167, 204, 237, 30);\n"
+            "border-radius: 10px;")
         self.listWidget.setFrameShape(QFrame.StyledPanel)
         self.listWidget.setFrameShadow(QFrame.Sunken)
         self.ver = QPushButton(self.centralwidget_menu)
@@ -70,8 +71,8 @@ class Ui_menu_window(object):
         self.copiar.setStyleSheet(
             u"background-color: transparent;border-radius:0px;")
         icon1 = QIcon()
-        icon1.addFile(u":/copiar/img/copy.png",
-                      QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u":/copiar/img/copy.png", QSize(), QIcon.Normal,
+                      QIcon.Off)
         self.copiar.setIcon(icon1)
         self.tipo = QCheckBox(self.centralwidget_menu)
         self.tipo.setObjectName(u"tipo")
@@ -89,6 +90,15 @@ class Ui_menu_window(object):
         font.setPointSize(8)
         self.label.setFont(font)
         self.label.setAlignment(Qt.AlignCenter)
+        self.refresh = QPushButton(self.centralwidget_menu)
+        self.refresh.setObjectName(u"refresh")
+        self.refresh.setGeometry(QRect(759, 5, 20, 20))
+        self.refresh.setStyleSheet(
+            u"background-color: transparent;border-radius:0px;")
+        icon2 = QIcon()
+        icon2.addFile(u":/refresh/img/refresh.png", QSize(), QIcon.Normal,
+                      QIcon.Off)
+        self.refresh.setIcon(icon2)
         menu_window.setCentralWidget(self.centralwidget_menu)
         self.fondo.raise_()
         self.listWidget.raise_()
@@ -102,31 +112,43 @@ class Ui_menu_window(object):
         self.tipo.raise_()
         self.add.raise_()
         self.label.raise_()
+        self.refresh.raise_()
 
         self.retranslateUi(menu_window)
 
         QMetaObject.connectSlotsByName(menu_window)
+
     # setupUi
 
     def retranslateUi(self, menu_window):
-        menu_window.setWindowTitle(QCoreApplication.translate(
-            "menu_window", u"Lockdown", None))
-        self.ver.setText(QCoreApplication.translate(
-            "menu_window", u"Ver registro", None))
-        self.editar.setText(QCoreApplication.translate(
-            "menu_window", u"Editar registro", None))
-        self.eliminar.setText(QCoreApplication.translate(
-            "menu_window", u"Eliminar registro", None))
-        self.respaldo.setText(QCoreApplication.translate(
-            "menu_window", u"Repaldo / Backup", None))
+        menu_window.setWindowTitle(
+            QCoreApplication.translate("menu_window", u"Lockdown", None))
+        self.ver.setText(
+            QCoreApplication.translate("menu_window", u"Ver registro", None))
+        self.editar.setText(
+            QCoreApplication.translate("menu_window", u"Editar registro",
+                                       None))
+        self.eliminar.setText(
+            QCoreApplication.translate("menu_window", u"Eliminar registro",
+                                       None))
+        self.respaldo.setText(
+            QCoreApplication.translate("menu_window", u"Repaldo / Backup",
+                                       None))
         self.fondo.setText("")
-        self.generar.setText(QCoreApplication.translate(
-            "menu_window", u"Generar", None))
+        self.generar.setText(
+            QCoreApplication.translate("menu_window", u"Generar", None))
         self.copiar.setText("")
-        self.tipo.setText(QCoreApplication.translate(
-            "menu_window", u"!\"\u00b7$%&/()=?\u00bf\u00a1'", None))
-        self.add.setText(QCoreApplication.translate(
-            "menu_window", u"A\u00f1adir registro", None))
-        self.label.setText(QCoreApplication.translate(
-            "menu_window", u"\u00a9 Lockdown - Hector Espinoza", None))
+        self.tipo.setText(
+            QCoreApplication.translate("menu_window",
+                                       u"!\"\u00b7$%&/()=?\u00bf\u00a1'",
+                                       None))
+        self.add.setText(
+            QCoreApplication.translate("menu_window", u"A\u00f1adir registro",
+                                       None))
+        self.label.setText(
+            QCoreApplication.translate("menu_window",
+                                       u"\u00a9 Lockdown - Hector Espinoza",
+                                       None))
+        self.refresh.setText("")
+
     # retranslateUi

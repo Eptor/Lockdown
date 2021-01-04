@@ -116,10 +116,9 @@ class add_data_class(QMainWindow, Ui_add_data):
         else:
             QMessageBox.information(
                 self, "Completado",
-                f"{self.nombre.text()} se ha añadido\nDebes reiniciar la app para ver los nuevos registros"
+                f"{self.nombre.text()} se ha añadido\nRefresca la tabla con el icono superior"
             )
-
-        menu_window_class().update()
+            self.close()
 
     def edit(self):
         registro = self.nombre.text()
@@ -199,6 +198,7 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         self.ver.clicked.connect(self.ver_registro)
         self.editar.clicked.connect(self.editar_registro)
         self.eliminar.clicked.connect(self.eliminar_registro)
+        self.refresh.clicked.connect(self.update)
 
     def update(self):
         self.listWidget.clear()
@@ -234,7 +234,10 @@ class menu_window_class(QMainWindow, Ui_menu_window):
 
     def añadir_registro(self):
         self.popup_data = add_data_class(mode=1)
-        self.popup_data.show()
+        if self.popup_data.show():
+            print("True")
+            self.popup.close()
+            self.update()
 
     def editar_registro(self):
         self.popup_edit = add_data_class(mode=2)
