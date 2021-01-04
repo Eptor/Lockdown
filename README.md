@@ -60,7 +60,7 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 
 - Instalación mediante GUI
 
-## License
+## Licencia
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
