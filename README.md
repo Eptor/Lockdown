@@ -89,6 +89,6 @@ Cualquier cantidad es infinitamente agradecida ❤
 
 - Paypal: [Hector Espinoza](http://www.paypal.me/espinoza7854)
 
-- Bitcoin:
+- Bitcoin: 3MaZtzzJSY2Pw6v3WMu5qvzyaFstPKUX2J
 
 ![](etc/btc_qr.png)
