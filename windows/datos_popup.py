@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-# Form generated from reading UI file 'datos_popup.ui'
+## Form generated from reading UI file 'datos_popup.ui'
 ##
-# Created by: Qt User Interface Compiler version 5.15.2
+## Created by: Qt User Interface Compiler version 5.15.2
 ##
-# WARNING! All changes made in this file will be lost when recompiling UI file!
+## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
 from PySide2.QtCore import *
@@ -21,8 +21,8 @@ class Ui_data_popup(object):
             data_popup.setObjectName(u"data_popup")
         data_popup.resize(392, 286)
         icon = QIcon()
-        icon.addFile(u":/logo/img/lockdown.png",
-                     QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/logo/img/lockdown.png", QSize(), QIcon.Normal,
+                     QIcon.Off)
         data_popup.setWindowIcon(icon)
         data_popup.setStyleSheet(u"")
         self.nombre = QLabel(data_popup)
@@ -47,9 +47,9 @@ class Ui_data_popup(object):
         self.copiar_c = QPushButton(data_popup)
         self.copiar_c.setObjectName(u"copiar_c")
         self.copiar_c.setGeometry(QRect(130, 250, 120, 28))
-        self.copiar_l = QPushButton(data_popup)
-        self.copiar_l.setObjectName(u"copiar_l")
-        self.copiar_l.setGeometry(QRect(260, 250, 120, 28))
+        self.abrir_l = QPushButton(data_popup)
+        self.abrir_l.setObjectName(u"abrir_l")
+        self.abrir_l.setGeometry(QRect(260, 250, 120, 28))
         self.label = QLabel(data_popup)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(0, 0, 410, 290))
@@ -67,30 +67,33 @@ class Ui_data_popup(object):
         self.link.raise_()
         self.ok.raise_()
         self.copiar_c.raise_()
-        self.copiar_l.raise_()
+        self.abrir_l.raise_()
         self.dinamica.raise_()
 
         self.retranslateUi(data_popup)
 
         QMetaObject.connectSlotsByName(data_popup)
+
     # setupUi
 
     def retranslateUi(self, data_popup):
         data_popup.setWindowTitle(
             QCoreApplication.translate("data_popup", u"Datos", None))
-        self.nombre.setText(QCoreApplication.translate(
-            "data_popup", u"Nombre:", None))
-        self.email.setText(QCoreApplication.translate(
-            "data_popup", u"Nombre:", None))
-        self.password.setText(QCoreApplication.translate(
-            "data_popup", u"Nombre:", None))
-        self.link.setText(QCoreApplication.translate(
-            "data_popup", u"Nombre:", None))
+        self.nombre.setText(
+            QCoreApplication.translate("data_popup", u"Nombre:", None))
+        self.email.setText(
+            QCoreApplication.translate("data_popup", u"Nombre:", None))
+        self.password.setText(
+            QCoreApplication.translate("data_popup", u"Nombre:", None))
+        self.link.setText(
+            QCoreApplication.translate("data_popup", u"Nombre:", None))
         self.ok.setText(QCoreApplication.translate("data_popup", u"OK", None))
-        self.copiar_c.setText(QCoreApplication.translate(
-            "data_popup", u"Copiar contrase\u00f1a", None))
-        self.copiar_l.setText(QCoreApplication.translate(
-            "data_popup", u"Copiar link", None))
+        self.copiar_c.setText(
+            QCoreApplication.translate("data_popup", u"Copiar contrase\u00f1a",
+                                       None))
+        self.abrir_l.setText(
+            QCoreApplication.translate("data_popup", u"Abrir link", None))
         self.label.setText("")
         self.dinamica.setText("")
+
     # retranslateUi

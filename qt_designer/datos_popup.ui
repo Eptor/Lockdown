@@ -110,7 +110,7 @@
     <string>Copiar contraseña</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="copiar_l">
+  <widget class="QPushButton" name="abrir_l">
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -120,7 +120,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Copiar link</string>
+    <string>Abrir link</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -165,7 +165,7 @@
   <zorder>link</zorder>
   <zorder>ok</zorder>
   <zorder>copiar_c</zorder>
-  <zorder>copiar_l</zorder>
+  <zorder>abrir_l</zorder>
   <zorder>dinamica</zorder>
  </widget>
  <resources>

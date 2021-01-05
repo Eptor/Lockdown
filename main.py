@@ -17,6 +17,7 @@ import os
 from time import sleep
 from getpass import getpass
 import sys
+from webbrowser import open as webopen
 
 # Modulos externos (pip install)
 import pyperclip
@@ -95,13 +96,16 @@ class add_data_class(QMainWindow, Ui_add_data):
         QMainWindow.__init__(self, *args, **kwargs)
         self.setupUi(self)
 
-        if mode == 1:
+        if len(mode) == 1:
             self.aceptar.clicked.connect(self.add)
-        elif mode == 2:
+        elif len(mode) == 2:
+            self.registro = mode[1]
             QMessageBox.information(
                 self, "Atención",
                 "Deja en blanco los campos que no deseas editar")
             self.label.setText("Nombre del registro a editar")
+            self.nombre.setText(self.registro)
+            self.nombre.setReadOnly(True)
             self.aceptar.clicked.connect(self.edit)
 
         self.cancelar.clicked.connect(lambda: self.close())
@@ -121,9 +125,8 @@ class add_data_class(QMainWindow, Ui_add_data):
             self.close()
 
     def edit(self):
-        registro = self.nombre.text()
         try:
-            data = get_password_data(registro)
+            data = get_password_data(self.registro)
         except IndexError:
             QMessageBox.warning(self, "Error",
                                 "No existen registros con ese nombre")
@@ -138,7 +141,7 @@ class add_data_class(QMainWindow, Ui_add_data):
             else:
                 email = encrypt(self.email.text(), key)
 
-            if self.password == "":
+            if self.password.text() == "":
                 contraseña = data[2]
             else:
                 contraseña = encrypt(self.password.text(), key)
@@ -149,13 +152,14 @@ class add_data_class(QMainWindow, Ui_add_data):
                 link = self.link.text()
 
             try:
-                edit_data(nombre, email, contraseña, link, registro)
+                edit_data(nombre, email, contraseña, link, self.registro)
             except Exception as e:
                 QMessageBox.warning(self, "Error",
                                     f"Ocurrió el siguiente error:\n{e}")
             else:
-                QMessageBox.information(self, "Completado",
-                                        f"{registro} se editó correctamente")
+                QMessageBox.information(
+                    self, "Completado",
+                    f"{self.registro} se editó correctamente")
                 self.close()
 
 
@@ -167,15 +171,15 @@ class datos_popup_class(QMainWindow, Ui_data_popup):
 
         self.ok.clicked.connect(lambda: self.close())
         self.copiar_c.clicked.connect(self.copiar_contraseña)
-        self.copiar_l.clicked.connect(self.copiar_link)
+        self.abrir_l.clicked.connect(self.abrir_link)
 
     def copiar_contraseña(self):
         self.dinamica.setText("Contraseña copiada!")
         pyperclip.copy(decrypt(data[2], key))
 
-    def copiar_link(self):
-        self.dinamica.setText("Link copiado!")
-        pyperclip.copy(data[3])
+    def abrir_link(self):
+        self.dinamica.setText("Link abierto!")
+        webopen(data[3], new=2)
 
     def show_data(self):
         self.nombre.setText(f"Nombre: {data[0]}")
@@ -240,7 +244,8 @@ class menu_window_class(QMainWindow, Ui_menu_window):
             self.update()
 
     def editar_registro(self):
-        self.popup_edit = add_data_class(mode=2)
+        self.popup_edit = add_data_class(
+            mode=[True, str(self.listWidget.currentItem().text())])
         self.popup_edit.show()
 
     def eliminar_registro(self):

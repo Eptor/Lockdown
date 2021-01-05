@@ -60,6 +60,12 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 
 - Instalación mediante GUI
 
+### V1.5.5 (4/01/2021)
+
+- Corrección de errores
+- Copiar enlace se cambió a abrir enlace
+  (Abrir enlace abre el enlace guardado y copia la contraseña)
+
 ## Licencia
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
