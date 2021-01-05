@@ -64,6 +64,11 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 - Copiar enlace se cambió a abrir enlace
   (Abrir enlace abre el enlace guardado y copia la contraseña)
 
+### V2.0 (5/01/2021)
+
+- Generador de respaldos funcional
+- Errores con la instalación corregidos
+
 ## Licencia
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
