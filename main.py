@@ -180,6 +180,7 @@ class datos_popup_class(QMainWindow, Ui_data_popup):
     def abrir_link(self):
         self.dinamica.setText("Link abierto!")
         webopen(data[3], new=2)
+        pyperclip.copy(data[3])
 
     def show_data(self):
         self.nombre.setText(f"Nombre: {data[0]}")
