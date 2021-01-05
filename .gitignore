@@ -131,3 +131,4 @@ dmypy.json
 database/data.sqlite
 database/data_backup.lockdown
 .vscode/
+Ejecutables.zip
