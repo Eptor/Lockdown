@@ -1,9 +1,5 @@
-#! D:\Programacion\Lockdown\venv\Scripts\python
-#!!! Este ^^ es mi ambiente virtual, eres libre de eliminar estas lineas.
-
 # Modulos locales
 from modules.crypto import encrypt, decrypt, decrypt_bkp, generador
-# from install import install
 
 # Ventanas
 from windows.login import Ui_login_window
@@ -96,9 +92,9 @@ class add_data_class(QMainWindow, Ui_add_data):
         QMainWindow.__init__(self, *args, **kwargs)
         self.setupUi(self)
 
-        if len(mode) == 1:
+        if not mode[0]:
             self.aceptar.clicked.connect(self.add)
-        elif len(mode) == 2:
+        elif mode[0]:
             self.registro = mode[1]
             QMessageBox.information(
                 self, "Atención",
@@ -203,6 +199,7 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         self.ver.clicked.connect(self.ver_registro)
         self.editar.clicked.connect(self.editar_registro)
         self.eliminar.clicked.connect(self.eliminar_registro)
+        self.respaldo.clicked.connect(self.generar_backup)
         self.refresh.clicked.connect(self.update)
 
     def update(self):
@@ -238,16 +235,19 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         self.popup.show()
 
     def añadir_registro(self):
-        self.popup_data = add_data_class(mode=1)
+        self.popup_data = add_data_class(mode=[False])
         if self.popup_data.show():
             print("True")
             self.popup.close()
             self.update()
 
     def editar_registro(self):
-        self.popup_edit = add_data_class(
-            mode=[True, str(self.listWidget.currentItem().text())])
-        self.popup_edit.show()
+        if str(self.listWidget.currentItem().text()) != "":
+            self.popup_edit = add_data_class(
+                mode=[True, str(self.listWidget.currentItem().text())])
+            self.popup_edit.show()
+        else:
+            pass
 
     def eliminar_registro(self):
         registro = str(self.listWidget.currentItem().text())
@@ -262,6 +262,20 @@ class menu_window_class(QMainWindow, Ui_menu_window):
                 f"{registro} se eliminó de la base de datos")
 
             self.update()
+
+    def generar_backup(self):
+        # Leer los bytes del archivo para encriptarlos
+        with open("database/data.sqlite", "rb") as data_read:
+            data = encrypt(data_read.read(), key)
+
+        # Escribe los bytes encriptados en un nuevo archivo
+        with open("database/data_backup.lockdown", "wb") as data_write:
+            data_write.write(data.encode())
+
+        QMessageBox.information(
+            self, "Completado",
+            "El respaldo se generó con exito en:\ndatbase/data_backup.lockdown"
+        )
 
 
 class popup_class(QMainWindow, Ui_popup_window):

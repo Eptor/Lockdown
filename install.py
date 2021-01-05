@@ -34,7 +34,9 @@ class add_user_class(QMainWindow, Ui_add_user):
 
     def add_action(self):
         if self.password.text() == self.password_2.text():
-            system("mkdir database && fsutil file createnew data.sqlite 0")
+            system(
+                "mkdir database && fsutil file createnew database/data.sqlite 0"
+            )
             conn = sqlite3.connect("database/data.sqlite")
             cursor = conn.cursor()
             usuario = self.nombre.text()
@@ -119,6 +121,9 @@ class menu_class(QMainWindow, Ui_install_menu):
                 )
 
             # Sobre-escribir la base de datos actual con la nueva
+            system(
+                "mkdir database && fsutil file createnew database/data.sqlite 0"
+            )
             with open("database/data.sqlite", "wb") as data_write:
                 data_write.write(data)
             QMessageBox.information(self, "Completado",
