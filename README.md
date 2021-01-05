@@ -69,6 +69,32 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 - Generador de respaldos funcional
 - Errores con la instalación corregidos
 
+### Ejecutable para Windows
+
+## Descargar ejecutable
+
+Puedes descargar el ejecutable desde la seccion "Releases"
+
+## Generar ejecutable
+
+Es posible crear un ejecutable tanto del instalador como del programa principal, para esto usaras Pyinstaler.
+Deberás utilizar los archivos .spec que vienen en la carpeta Pyinstaller_specs
+
+Mueve los archivos **main.py** e **install.py** a la carpeta Pyinstaller_specs y usalos de la siguiente manera:
+
+```sh
+pyinstaller Lockdown.spec
+```
+
+y
+
+```sh
+pyinstaller Lockdown_instalador.spec
+```
+
+Despues mueve los dos ejecutables a un folder junto a los archivos **words.txt** y **styles.css** y
+podrás ejecutarlos sin problema.
+
 ## Licencia
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
