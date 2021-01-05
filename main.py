@@ -242,6 +242,7 @@ class menu_window_class(QMainWindow, Ui_menu_window):
             self.update()
 
     def editar_registro(self):
+        # Verificación
         if str(self.listWidget.currentItem().text()) != "":
             self.popup_edit = add_data_class(
                 mode=[True, str(self.listWidget.currentItem().text())])
