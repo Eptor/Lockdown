@@ -51,7 +51,7 @@ class Ui_menu_window(object):
         self.respaldo.setGeometry(QRect(11, 270, 220, 41))
         self.fondo = QLabel(self.centralwidget_menu)
         self.fondo.setObjectName(u"fondo")
-        self.fondo.setGeometry(QRect(0, -2, 801, 460))
+        self.fondo.setGeometry(QRect(0, 0, 801, 641))
         self.fondo.setStyleSheet(
             u"background-image: url(:/background/img/blurred_background.jpg);")
         self.generar = QPushButton(self.centralwidget_menu)
@@ -82,14 +82,15 @@ class Ui_menu_window(object):
         self.add = QPushButton(self.centralwidget_menu)
         self.add.setObjectName(u"add")
         self.add.setGeometry(QRect(10, 90, 220, 41))
-        self.label = QLabel(self.centralwidget_menu)
-        self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(610, 385, 190, 21))
+        self.copyright = QLabel(self.centralwidget_menu)
+        self.copyright.setObjectName(u"copyright")
+        self.copyright.setGeometry(QRect(0, 2, 190, 21))
         font = QFont()
         font.setFamily(u"Nunito Sans")
         font.setPointSize(8)
-        self.label.setFont(font)
-        self.label.setAlignment(Qt.AlignCenter)
+        self.copyright.setFont(font)
+        self.copyright.setStyleSheet(u"color:whitesmoke;")
+        self.copyright.setAlignment(Qt.AlignCenter)
         self.refresh = QPushButton(self.centralwidget_menu)
         self.refresh.setObjectName(u"refresh")
         self.refresh.setGeometry(QRect(759, 5, 20, 20))
@@ -99,6 +100,48 @@ class Ui_menu_window(object):
         icon2.addFile(u":/refresh/img/refresh.png", QSize(), QIcon.Normal,
                       QIcon.Off)
         self.refresh.setIcon(icon2)
+        self.morse_input = QTextEdit(self.centralwidget_menu)
+        self.morse_input.setObjectName(u"morse_input")
+        self.morse_input.setGeometry(QRect(70, 450, 721, 71))
+        self.morse_input.setStyleSheet(
+            u"border: 2px dotted rgb(255, 178, 230);\n"
+            "background: rgba(167, 204, 237, 30);\n"
+            "border-radius: 3px;")
+        self.morse_input.setAcceptRichText(False)
+        self.morse_output = QTextEdit(self.centralwidget_menu)
+        self.morse_output.setObjectName(u"morse_output")
+        self.morse_output.setGeometry(QRect(70, 530, 721, 71))
+        self.morse_output.setStyleSheet(
+            u"border: 2px dotted rgb(255, 178, 230);\n"
+            "background: rgba(167, 204, 237, 30);\n"
+            "border-radius: 3px;")
+        self.morse_output.setReadOnly(True)
+        self.convertir = QPushButton(self.centralwidget_menu)
+        self.convertir.setObjectName(u"convertir")
+        self.convertir.setGeometry(QRect(10, 450, 50, 70))
+        icon3 = QIcon()
+        icon3.addFile(u":/convertir/img/convertir.png", QSize(), QIcon.Normal,
+                      QIcon.Off)
+        self.convertir.setIcon(icon3)
+        self.copiar_morse = QPushButton(self.centralwidget_menu)
+        self.copiar_morse.setObjectName(u"copiar_morse")
+        self.copiar_morse.setGeometry(QRect(10, 530, 50, 70))
+        self.copiar_morse.setIcon(icon1)
+        self.drop_button = QPushButton(self.centralwidget_menu)
+        self.drop_button.setObjectName(u"drop_button")
+        self.drop_button.setGeometry(QRect(760, 377, 20, 20))
+        self.drop_button.setStyleSheet(
+            u"background-color: transparent;border-radius:0px;")
+        icon4 = QIcon()
+        icon4.addFile(u":/drop/img/drop.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.drop_button.setIcon(icon4)
+        self.drop_button.setIconSize(QSize(30, 30))
+        self.descripcion_drop = QLabel(self.centralwidget_menu)
+        self.descripcion_drop.setObjectName(u"descripcion_drop")
+        self.descripcion_drop.setGeometry(QRect(10, 420, 401, 16))
+        self.descripcion_drop.setStyleSheet(u"color:whitesmoke;")
+        self.descripcion_drop.setFrameShape(QFrame.NoFrame)
+        self.descripcion_drop.setFrameShadow(QFrame.Sunken)
         menu_window.setCentralWidget(self.centralwidget_menu)
         self.fondo.raise_()
         self.listWidget.raise_()
@@ -111,8 +154,14 @@ class Ui_menu_window(object):
         self.copiar.raise_()
         self.tipo.raise_()
         self.add.raise_()
-        self.label.raise_()
+        self.copyright.raise_()
         self.refresh.raise_()
+        self.morse_input.raise_()
+        self.morse_output.raise_()
+        self.convertir.raise_()
+        self.copiar_morse.raise_()
+        self.drop_button.raise_()
+        self.descripcion_drop.raise_()
 
         self.retranslateUi(menu_window)
 
@@ -145,10 +194,17 @@ class Ui_menu_window(object):
         self.add.setText(
             QCoreApplication.translate("menu_window", u"A\u00f1adir registro",
                                        None))
-        self.label.setText(
+        self.copyright.setText(
             QCoreApplication.translate("menu_window",
                                        u"\u00a9 Lockdown - Hector Espinoza",
                                        None))
         self.refresh.setText("")
+        self.convertir.setText("")
+        self.copiar_morse.setText("")
+        self.drop_button.setText("")
+        self.descripcion_drop.setText(
+            QCoreApplication.translate(
+                "menu_window", u"Traductor de codigo morse, no usar acentos.",
+                None))
 
     # retranslateUi

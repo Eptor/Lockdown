@@ -78,7 +78,7 @@ def mnemotecnica():
     for _ in range(0, 3):
         palabra += f"{choice(palabras)} "
 
-    return palabra[0:-1]
+    return palabra[:-1]
 
 
 def generador(tipo):

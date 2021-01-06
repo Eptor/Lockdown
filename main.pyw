@@ -19,7 +19,48 @@ from webbrowser import open as webopen
 import pyperclip
 from PySide2.QtWidgets import (QApplication, QMainWindow, QMessageBox,
                                QInputDialog, QFileDialog, QListWidgetItem)
-from PySide2.QtCore import Qt
+from PySide2.QtCore import Qt, QSize
+from PySide2.QtGui import QIcon
+
+morse = {
+    'A': '.-',
+    'B': '-...',
+    'C': '-.-.',
+    'D': '-..',
+    'E': '.',
+    'F': '..-.',
+    'G': '--.',
+    'H': '....',
+    'I': '..',
+    'J': '.---',
+    'K': '-.-',
+    'L': '.-..',
+    'M': '--',
+    'N': '-.',
+    'O': '---',
+    'P': '.--.',
+    'Q': '--.-',
+    'R': '.-.',
+    'S': '...',
+    'T': '-',
+    'U': '..-',
+    'V': '...-',
+    'W': '.--',
+    'X': '-..-',
+    'Y': '-.--',
+    'Z': '--..',
+    '0': '-----',
+    '1': '.----',
+    '2': '..---',
+    '3': '...--',
+    '4': '....-',
+    '5': '.....',
+    '6': '-....',
+    '7': '--...',
+    '8': '---..',
+    '9': '----.',
+    ' ': '/'
+}
 
 
 class login_window_class(QMainWindow, Ui_login_window):
@@ -191,7 +232,12 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         self.setupUi(self)
         self.gen_tipo = None
         self.update()
-
+        self.down_icon = QIcon()
+        self.down_icon.addFile(u":/drop/img/drop.png", QSize(), QIcon.Normal,
+                               QIcon.Off)
+        self.up_icon = QIcon()
+        self.up_icon.addFile(u":/drop/img/arrows-57.png", QSize(),
+                             QIcon.Normal, QIcon.Off)
         self.tipo.stateChanged.connect(self.update_tipo)
         self.generar.clicked.connect(self.generar_password)
         self.copiar.clicked.connect(self.copiar_gen)
@@ -201,6 +247,9 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         self.eliminar.clicked.connect(self.eliminar_registro)
         self.respaldo.clicked.connect(self.generar_backup)
         self.refresh.clicked.connect(self.update)
+        self.drop_button.clicked.connect(self.ver_morse)
+        self.convertir.clicked.connect(self.traducir_morse)
+        self.copiar_morse.clicked.connect(self.morse_copiar)
 
     def update(self):
         self.listWidget.clear()
@@ -277,6 +326,52 @@ class menu_window_class(QMainWindow, Ui_menu_window):
             self, "Completado",
             "El respaldo se generó con exito en:\ndatbase/data_backup.lockdown"
         )
+
+    def ver_morse(self):
+        if self.height() == 407:
+            self.setFixedHeight(631)
+            self.drop_button.setIcon(self.up_icon)
+            self.drop_button.setIconSize(QSize(30, 30))
+
+        else:
+            self.setFixedHeight(407)
+            self.drop_button.setIcon(self.down_icon)
+            self.drop_button.setIconSize(QSize(30, 30))
+
+    def get_key(self, val):
+        for key, value in morse.items():
+            if val == value:
+                return key
+
+        return f"La llave de {val} no existe"
+
+    def traducir_morse(self):
+        resultado = []
+        if "a" in self.morse_input.toPlainText(
+        ) or "A" in self.morse_input.toPlainText():
+            palabras = self.morse_input.toPlainText().upper().split()
+            for palabra in palabras:
+                for letra in palabra:
+                    resultado.append(morse[letra])
+                    resultado.append(" ")
+
+                resultado.append("/")
+                resultado.append(" ")
+
+            self.morse_input.setText("")
+            self.morse_output.setText("".join(resultado[:-1]))
+        else:
+            letras = self.morse_input.toPlainText().split(" ")
+            for letra in letras:
+                resultado.append(self.get_key(letra))
+
+            resultado_ascii = "".join(resultado)
+            self.morse_input.setText("")
+            self.morse_output.setText(resultado_ascii.capitalize())
+
+    def morse_copiar(self):
+        pyperclip.copy(self.morse_output.toPlainText())
+        self.morse_output.setText("Se copió el resultado !")
 
 
 class popup_class(QMainWindow, Ui_popup_window):

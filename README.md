@@ -69,6 +69,10 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 - Generador de respaldos funcional
 - Errores con la instalación corregidos
 
+### V3.0 (6/01/2021)
+
+- Codificador y decodificador de codigo morse
+
 ### Ejecutable para Windows
 
 ## Descargar ejecutable
@@ -119,3 +123,5 @@ Cualquier cantidad es infinitamente agradecida ❤
 - Icono sacado de: [iconscout](https://iconscout.com/icon/lockdown-2318925), fue creado por [Nithinan Tatah](https://iconscout.com/contributors/nithinan-tatah)
 - Icono copiar: [iconscout](https://iconscout.com/icon/copy-197)
 - Icono refresh: [iconscout](https://iconscout.com/icon/refresh-reload-recycle-synchronize-retry)
+- Icono convertir: [iconscout](https://iconscout.com/icons/arrow), fue creado por by [Chameleon Design](https://iconscout.com/contributors/chamedesign)
+- Iconos flechas: [iconscout - Unicons Font](https://iconscout.com/icon-pack/arrows-57)

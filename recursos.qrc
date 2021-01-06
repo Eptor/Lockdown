@@ -2,6 +2,13 @@
   <qresource prefix="background">
     <file>img/blurred_background.jpg</file>
   </qresource>
+  <qresource prefix="drop">
+    <file>img/arrows-57.png</file>
+    <file>img/drop.png</file>
+  </qresource>
+  <qresource prefix="convertir">
+    <file>img/convertir.png</file>
+  </qresource>
   <qresource prefix="refresh">
     <file>img/refresh.png</file>
   </qresource>
