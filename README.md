@@ -73,13 +73,13 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 
 - Codificador y decodificador de codigo morse
 
-### Ejecutable para Windows
+## Ejecutable para Windows
 
-## Descargar ejecutable
+### Descargar ejecutable
 
 Puedes descargar el ejecutable desde la seccion "Releases"
 
-## Generar ejecutable
+### Generar ejecutable
 
 Es posible crear un ejecutable tanto del instalador como del programa principal, para esto usaras Pyinstaler.
 Deberás utilizar los archivos .spec que vienen en la carpeta Pyinstaller_specs
