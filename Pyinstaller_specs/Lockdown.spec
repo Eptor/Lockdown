@@ -3,8 +3,8 @@
 block_cipher = None
 
 
-a = Analysis(['main.py'],
-             pathex=['venv/Lib/site-packages', 'd:\\Programacion\\Lockdown'],
+a = Analysis(['main.pyw'],
+             pathex=['venv\\Lib\\site-packages', 'd:\\Programacion\\Lockdown'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -30,4 +30,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=True , icon='img\\lockdown.ico')
+          console=False , icon='img\\lockdown.ico')

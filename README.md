@@ -80,7 +80,7 @@ Puedes descargar el ejecutable desde la seccion "Releases"
 Es posible crear un ejecutable tanto del instalador como del programa principal, para esto usaras Pyinstaler.
 Deberás utilizar los archivos .spec que vienen en la carpeta Pyinstaller_specs
 
-Mueve los archivos **main.py** e **install.py** a la carpeta Pyinstaller_specs y usalos de la siguiente manera:
+Mueve los archivos **main.pyw** e **install.pyw** a la carpeta Pyinstaller_specs y usalos de la siguiente manera:
 
 ```sh
 pyinstaller Lockdown.spec

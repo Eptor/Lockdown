@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['install.py'],
+a = Analysis(['install.pyw'],
              pathex=['venv/Lib/site-packages', 'd:\\Programacion\\Lockdown'],
              binaries=[],
              datas=[],
