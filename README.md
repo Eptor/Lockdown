@@ -99,12 +99,6 @@ pyinstaller Lockdown_instalador.spec
 Despues mueve los dos ejecutables a un folder junto a los archivos **words.txt** y **styles.css** y
 podrás ejecutarlos sin problema.
 
-## Licencia
-
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-
-- Copyright 2020 © Eptor.
-
 ## Donaciones
 
 Cualquier cantidad es infinitamente agradecida ❤
@@ -115,7 +109,7 @@ Cualquier cantidad es infinitamente agradecida ❤
 
 - Monero: 47egPTVGs3Eiq7gPYEmw6zat8dqLL8phYK61Hud937tvRbusGfd2TmUZW8eag6jb38Q3bQyKUns13SKjwHhPV4fXMnNCxxF
 
-![](etc/btc_qr.png)
+<img align="center" src="etc/btc_qr.png">
 
 ## Creditos
 
@@ -125,3 +119,9 @@ Cualquier cantidad es infinitamente agradecida ❤
 - Icono refresh: [iconscout](https://iconscout.com/icon/refresh-reload-recycle-synchronize-retry)
 - Icono convertir: [iconscout](https://iconscout.com/icons/arrow), fue creado por by [Chameleon Design](https://iconscout.com/contributors/chamedesign)
 - Iconos flechas: [iconscout - Unicons Font](https://iconscout.com/icon-pack/arrows-57)
+
+## Licencia
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+- Copyright 2021 © Eptor.
