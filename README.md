@@ -1,12 +1,21 @@
 # Lockdown
 
-> Keep your data safe and locked away
+<p align="center">
+<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/Eptor/Lockdown?color=yellow&label=Actividad&style=for-the-badge">
+<a href="https://github.com/Eptor/Lockdown/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Eptor/Lockdown?color=red&label=estrellas&style=for-the-badge"></a>
+<a href="https://github.com/Eptor/Lockdown/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/Eptor/Lockdown?color=black&label=Licencia&style=for-the-badge"></a>
+<a href="https://github.com/Eptor/Lockdown/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/Eptor/Lockdown?label=problemas&style=for-the-badge"></a>
+</p>
+
+<p align="center">
+<img src=img/lockdown.png height=100>
+</p>
 
 Lockdown es un administrador de contraseñas sin conexión a internet, lo que facilita la confianza en el usuario pues nada está siendo enviado a nadie.
 
-<p align="center">
+Este es el menú
+
 <img src=etc/menu.png height=300>
-</p>
 
 ## Instalación
 
@@ -18,9 +27,7 @@ pip install -r requirements.txt
 
 ### Instalar base de datos
 
-<p align="center">
 <img src=etc/menu_instalacion.png>
-</p>
 
 Debes de correr el archivo _install.py_ de la siguiente manera:
 
@@ -37,18 +44,11 @@ Se abrirá un menú dónde podrá elegir si:
 
 Lockdown utiliza el metodo de encriptado Fernet, el cual es un metodo de encriptado simetrico, por lo que tus contraseñas están seguras.
 
-<p align="center">
-  <img src=etc/datos.png height=300>
-</p>
+<img src=etc/datos.png height=300>
 
-<br/>
+Y asi está el texto en la base de datos
 
-<p align="center">Y asi está el texto en la base de datos</p>
-<p align="center">
-  <img src=etc/not_fb.png height=300>
-</p>
-
-<br/>
+<img src=etc/not_fb.png height=300>
 
 ## Olvidaste tu contraseña?
 
