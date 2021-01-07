@@ -14,6 +14,7 @@ from time import sleep
 from getpass import getpass
 import sys
 from webbrowser import open as webopen
+from string import ascii_letters
 
 # Modulos externos (pip install)
 import pyperclip
@@ -37,6 +38,7 @@ morse = {
     'L': '.-..',
     'M': '--',
     'N': '-.',
+    'Ñ': '--.--',
     'O': '---',
     'P': '.--.',
     'Q': '--.-',
@@ -59,7 +61,27 @@ morse = {
     '7': '--...',
     '8': '---..',
     '9': '----.',
-    ' ': '/'
+    ' ': '/',
+    '.': '.-.-.-',
+    ',': '--..--',
+    '?': '..--..',
+    "'": ".----.",
+    '!': '-.-.--',
+    '/': '-..-.',
+    '(': '-.--.',
+    ')': '-.--.-',
+    '&': '.-....',
+    ':': '---...',
+    ';': '-.-.-.',
+    '=': '-...-',
+    '+': '.-.-.',
+    '-': '-....-',
+    '_': '..--.-',
+    '"': '.-..-.',
+    '$': '...-..-',
+    '@': '.--.-.',
+    '¿': '..-.-',
+    '¡': '--...-'
 }
 
 
@@ -238,6 +260,7 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         self.up_icon = QIcon()
         self.up_icon.addFile(u":/drop/img/arrows-57.png", QSize(),
                              QIcon.Normal, QIcon.Off)
+
         self.tipo.stateChanged.connect(self.update_tipo)
         self.generar.clicked.connect(self.generar_password)
         self.copiar.clicked.connect(self.copiar_gen)
@@ -252,6 +275,7 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         self.copiar_morse.clicked.connect(self.morse_copiar)
 
     def update(self):
+        """ actualiza los items en la lista """
         self.listWidget.clear()
         self.listWidget.addItem("")
         for x in get_user_passwords():
@@ -266,7 +290,7 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         self.gen_text.setText("Contraseña copiada!")
 
     def update_tipo(self, state):
-        self.gen_tipo = state
+        self.gen_tipo = state  # True / False
 
     def generar_password(self):
         self.gen_text.clear()
@@ -279,20 +303,22 @@ class menu_window_class(QMainWindow, Ui_menu_window):
 
     def ver_registro(self):
         global data
+        # data = texto seleccionado en la lista
         data = get_password_data(str(self.listWidget.currentItem().text()))
         self.popup = datos_popup_class()
         self.popup.show()
 
     def añadir_registro(self):
+        # Se setea en false para abrir el popup de añadir
         self.popup_data = add_data_class(mode=[False])
         if self.popup_data.show():
-            print("True")
             self.popup.close()
             self.update()
 
     def editar_registro(self):
-        # Verificación
+        # Si no hay nada seleccionado aplica un pass
         if str(self.listWidget.currentItem().text()) != "":
+            # Se setea en False para abrir el popup de editar y se pasa el texto seleccionado
             self.popup_edit = add_data_class(
                 mode=[True, str(self.listWidget.currentItem().text())])
             self.popup_edit.show()
@@ -328,6 +354,7 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         )
 
     def ver_morse(self):
+        """ Si la altura de la ventana es la predeterminada se baja para enseñar la seccion oculta """
         if self.height() == 407:
             self.setFixedHeight(631)
             self.drop_button.setIcon(self.up_icon)
@@ -339,6 +366,7 @@ class menu_window_class(QMainWindow, Ui_menu_window):
             self.drop_button.setIconSize(QSize(30, 30))
 
     def get_key(self, val):
+        """ Regresa la llave del diccionario correspondiente al valor """
         for key, value in morse.items():
             if val == value:
                 return key
@@ -346,28 +374,40 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         return f"La llave de {val} no existe"
 
     def traducir_morse(self):
+        """ Traduce del abecedario a morse y viceversa """
         resultado = []
-        if "a" in self.morse_input.toPlainText(
-        ) or "A" in self.morse_input.toPlainText():
+
+        if any(item in [x for x in ascii_letters]
+               for item in [x for x in self.morse_input.toPlainText()]
+               ):  # Si existe una letra en el input se traduce a morse
             palabras = self.morse_input.toPlainText().upper().split()
             for palabra in palabras:
                 for letra in palabra:
                     resultado.append(morse[letra])
                     resultado.append(" ")
 
+                # Se agregan espacios y el signo de espacio en clave morse
                 resultado.append("/")
                 resultado.append(" ")
 
             self.morse_input.setText("")
+            # Se muestra el resultado ignorando el espacio del final
             self.morse_output.setText("".join(resultado[:-1]))
-        else:
-            letras = self.morse_input.toPlainText().split(" ")
-            for letra in letras:
-                resultado.append(self.get_key(letra))
 
-            resultado_ascii = "".join(resultado)
-            self.morse_input.setText("")
-            self.morse_output.setText(resultado_ascii.capitalize())
+        # Si no se encuentra ninguna letra en el input se traduce al español
+        else:
+            # Se separa por espacios
+            letras = self.morse_input.toPlainText().split(" ")
+            # iteración sobre las letras en morse
+            for letra in letras:
+                resultado.append(
+                    self.get_key(letra)
+                )  # Se agrega la llave correspondiente al valor en morse
+
+            resultado_ascii = "".join(resultado)  # Se crea el resultado
+            self.morse_input.setText("")  # Se limpia el input
+            self.morse_output.setText(resultado_ascii.capitalize(
+            ))  # Se muestra el resultado empezando por mayuscula
 
     def morse_copiar(self):
         pyperclip.copy(self.morse_output.toPlainText())
@@ -375,6 +415,7 @@ class menu_window_class(QMainWindow, Ui_menu_window):
 
 
 class popup_class(QMainWindow, Ui_popup_window):
+    """ Aviso de instalación """
     def __init__(self, *args, **kwargs):
         QMainWindow.__init__(self, *args, **kwargs)
         self.setupUi(self)
@@ -383,6 +424,7 @@ class popup_class(QMainWindow, Ui_popup_window):
 
 
 if __name__ == "__main__":
+    # Si existe una base de datos se inicia el programa
     if os.path.isfile("database/data.sqlite"):
         from modules.data_handler import (
             get_user_data,
@@ -400,6 +442,8 @@ if __name__ == "__main__":
         login = login_window_class()
         login.show()
         sys.exit(app.exec_())
+
+    # Si no existe una base de datos se enseña el popup de aviso
     else:
         app = QApplication(sys.argv)
         app.setStyleSheet(open("style.css").read())

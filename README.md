@@ -73,6 +73,11 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 
 - Codificador y decodificador de codigo morse
 
+### Pequeña actualización 1
+
+- Simbología en morse añadida
+- Comentarios en el código
+
 ## Ejecutable para Windows
 
 ### Descargar ejecutable
