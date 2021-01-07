@@ -152,7 +152,7 @@ Para contribuir, sigue las siguientes instrucciones:
 
 ## Licencia
 
-Distribuido bajo la licencia[GPL v3](https://www.gnu.org/licenses/gpl-3.0). Mira `LICENSE` para más información.
+Distribuido bajo la licencia [GPL v3](https://www.gnu.org/licenses/gpl-3.0). Mira `LICENSE` para más información.
 
 - Copyright 2021 © Eptor.
 </p>
