@@ -2,9 +2,11 @@
 
 > Keep your data safe and locked away
 
-Lockdown es el sucesor espiritual de Padlock, el primer administrador de contraseñas que hice.
+Lockdown es un administrador de contraseñas sin conexión a internet, lo que facilita la confianza en el usuario pues nada está siendo enviado a nadie.
 
-![](etc/menu.png)
+<p align="center">
+<img src=etc/menu.png height=300>
+</p>
 
 ## Instalación
 
@@ -16,9 +18,11 @@ pip install -r requirements.txt
 
 ### Instalar base de datos
 
-![](etc/menu_instalacion.png)
+<p align="center">
+<img src=etc/menu_instalacion.png>
+</p>
 
-Debes de correr el archivo install.py de la siguiente manera:
+Debes de correr el archivo _install.py_ de la siguiente manera:
 
 ```sh
 install.py
@@ -33,11 +37,18 @@ Se abrirá un menú dónde podrá elegir si:
 
 Lockdown utiliza el metodo de encriptado Fernet, el cual es un metodo de encriptado simetrico, por lo que tus contraseñas están seguras.
 
-![](etc/datos.png)
+<p align="center">
+  <img src=etc/datos.png height=300>
+</p>
 
-Y asi está el texto en la base de datos
+<br/>
 
-![](etc/not_fb.png)
+<p align="center">Y asi está el texto en la base de datos</p>
+<p align="center">
+  <img src=etc/not_fb.png height=300>
+</p>
+
+<br/>
 
 ## Olvidaste tu contraseña?
 
@@ -108,13 +119,27 @@ podrás ejecutarlos sin problema.
 
 Cualquier cantidad es infinitamente agradecida ❤
 
+<br/>
+
 - Paypal: [Hector Espinoza](http://www.paypal.me/espinoza7854)
 
 - Bitcoin: 3MaZtzzJSY2Pw6v3WMu5qvzyaFstPKUX2J
 
 - Monero: 47egPTVGs3Eiq7gPYEmw6zat8dqLL8phYK61Hud937tvRbusGfd2TmUZW8eag6jb38Q3bQyKUns13SKjwHhPV4fXMnNCxxF
 
-<img align="center" src="etc/btc_qr.png">
+<img src="etc/btc_qr.png" height=100>
+
+## Contribuir
+
+Las contribuciones son lo que hacen que la comunidad de código abierto sea un lugar tan increíble para aprender, inspirar y crear. Cualquier contribución que haga es **grandemete apreciada**.
+
+Para contribuir, sigue las siguientes instrucciones:
+
+1. Haz un **fork** del proyecto
+2. Crea una rama (branch) con tus añadidos, por ejemplo (`git checkout -b característica_nueva`)
+3. Haz un commit con tus cambios (`git commit -m 'Caracteristica X añadida'`)
+4. Haz un push a la rama (`git push origin característica_nueva`)
+5. Abre una Pull Request
 
 ## Creditos
 
@@ -127,6 +152,7 @@ Cualquier cantidad es infinitamente agradecida ❤
 
 ## Licencia
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+Distribuido bajo la licencia[GPL v3](https://www.gnu.org/licenses/gpl-3.0). Mira `LICENSE` para más información.
 
 - Copyright 2021 © Eptor.
+</p>
