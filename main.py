@@ -14,6 +14,7 @@ from time import sleep
 from getpass import getpass
 import sys
 from webbrowser import open as webopen
+from string import ascii_letters
 
 # Modulos externos (pip install)
 import pyperclip
@@ -347,8 +348,9 @@ class menu_window_class(QMainWindow, Ui_menu_window):
 
     def traducir_morse(self):
         resultado = []
-        if "a" in self.morse_input.toPlainText(
-        ) or "A" in self.morse_input.toPlainText():
+
+        if any(item in [x for x in ascii_letters]
+               for item in [x for x in self.morse_input.toPlainText()]):
             palabras = self.morse_input.toPlainText().upper().split()
             for palabra in palabras:
                 for letra in palabra:
