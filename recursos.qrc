@@ -15,6 +15,12 @@
   <qresource prefix="copiar">
     <file>img/copy.png</file>
   </qresource>
+  <qresource prefix="files">
+    <file>img/esconder.png</file>
+    <file>img/guardar.png</file>
+    <file>img/imagen.png</file>
+    <file>img/folder.png</file>
+  </qresource>
   <qresource prefix="logo">
     <file>img/lockdown.png</file>
   </qresource>

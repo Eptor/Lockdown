@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'menu.ui'
+## Form generated from reading UI file 'menu_test.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -138,10 +138,13 @@ class Ui_menu_window(object):
         self.drop_button.setIconSize(QSize(30, 30))
         self.descripcion_drop = QLabel(self.centralwidget_menu)
         self.descripcion_drop.setObjectName(u"descripcion_drop")
-        self.descripcion_drop.setGeometry(QRect(10, 420, 401, 16))
+        self.descripcion_drop.setGeometry(QRect(10, 420, 261, 16))
         self.descripcion_drop.setStyleSheet(u"color:whitesmoke;")
         self.descripcion_drop.setFrameShape(QFrame.NoFrame)
         self.descripcion_drop.setFrameShadow(QFrame.Sunken)
+        self.esconder_img = QPushButton(self.centralwidget_menu)
+        self.esconder_img.setObjectName(u"esconder_img")
+        self.esconder_img.setGeometry(QRect(10, 607, 120, 28))
         menu_window.setCentralWidget(self.centralwidget_menu)
         self.fondo.raise_()
         self.listWidget.raise_()
@@ -162,6 +165,7 @@ class Ui_menu_window(object):
         self.copiar_morse.raise_()
         self.drop_button.raise_()
         self.descripcion_drop.raise_()
+        self.esconder_img.raise_()
 
         self.retranslateUi(menu_window)
 
@@ -206,5 +210,8 @@ class Ui_menu_window(object):
             QCoreApplication.translate(
                 "menu_window", u"Traductor de codigo morse, no usar acentos.",
                 None))
+        self.esconder_img.setText(
+            QCoreApplication.translate("menu_window", u"Esconder archivos",
+                                       None))
 
     # retranslateUi
