@@ -84,16 +84,20 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 
 - Codificador y decodificador de codigo morse
 
-### Pequeña actualización 1
+### Pequeña actualización 1 (7/01/2021)
 
 - Simbología en morse añadida
 - Comentarios en el código
+
+### Integración con Hides #1 (8/01/2021)
+
+- Se creó una [rama nueva](https://github.com/Eptor/Lockdown/tree/Hides) para el testeo de la integración con [Hides](https://github.com/Eptor/Hides), se espera un merge con la rama principal (GUI) dentro de la siguiente semana
 
 ## Ejecutable para Windows
 
 ### Descargar ejecutable
 
-Puedes descargar el ejecutable desde la seccion "Releases"
+Puedes descargar el ejecutable desde la seccion "Releases", aunque no siempre está a la par con la versión más actual.
 
 ### Generar ejecutable
 
