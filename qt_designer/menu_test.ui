@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>641</height>
+    <height>407</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -365,8 +365,8 @@ border-radius: 3px;</string>
    <widget class="QPushButton" name="esconder_img">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>607</y>
+      <x>540</x>
+      <y>410</y>
       <width>120</width>
       <height>28</height>
      </rect>
@@ -378,8 +378,8 @@ border-radius: 3px;</string>
    <widget class="QPushButton" name="revelar_img">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>607</y>
+      <x>670</x>
+      <y>410</y>
       <width>120</width>
       <height>28</height>
      </rect>

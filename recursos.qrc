@@ -22,6 +22,7 @@
     <file>img/folder.png</file>
   </qresource>
   <qresource prefix="logo">
+    <file>img/Hides.ico</file>
     <file>img/lockdown.png</file>
   </qresource>
 </RCC>

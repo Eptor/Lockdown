@@ -13,8 +13,6 @@
 
 Lockdown es un administrador de contraseñas sin conexión a internet, lo que facilita la confianza en el usuario pues nada está siendo enviado a nadie.
 
-Este es el menú
-
 <img src=etc/menu.png height=300>
 
 ## Instalación
@@ -89,11 +87,16 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 - Simbología en morse añadida
 - Comentarios en el código
 
+### V3.5 (8/01/2021)
+
+- Integración con [Hides](https://github.com/Eptor/Hides)
+  > Con Hides puedes ocultar tus archivos dentro de una imagen, haciendolos invisibles.
+
 ## Ejecutable para Windows
 
 ### Descargar ejecutable
 
-Puedes descargar el ejecutable desde la seccion "Releases"
+Puedes descargar el ejecutable desde la seccion "Releases", aunque no siempre está a la par con la versión más actual.
 
 ### Generar ejecutable
 
@@ -141,16 +144,15 @@ Para contribuir, sigue las siguientes instrucciones:
 
 ## Creditos
 
-- Imagen blurr: [ianbarnard.co.uk](http://www.ianbarnard.co.uk/wp-content/uploads/2013/09/free-blurred-web-backgrounds-09.jpg)
-- Icono sacado de: [iconscout](https://iconscout.com/icon/lockdown-2318925), fue creado por [Nithinan Tatah](https://iconscout.com/contributors/nithinan-tatah)
+- Imagen blurr / background: [ianbarnard.co.uk](http://www.ianbarnard.co.uk/wp-content/uploads/2013/09/free-blurred-web-backgrounds-09.jpg)
+- Logo sacado de: [iconscout](https://iconscout.com/icon/lockdown-2318925), fue creado por [Nithinan Tatah](https://iconscout.com/contributors/nithinan-tatah)
 - Icono copiar: [iconscout](https://iconscout.com/icon/copy-197)
 - Icono refresh: [iconscout](https://iconscout.com/icon/refresh-reload-recycle-synchronize-retry)
 - Icono convertir: [iconscout](https://iconscout.com/icons/arrow), fue creado por by [Chameleon Design](https://iconscout.com/contributors/chamedesign)
 - Iconos flechas: [iconscout - Unicons Font](https://iconscout.com/icon-pack/arrows-57)
+- Icono de Hides: [Favicon.io](https://favicon.io/)
+- Iconos usados en Hides: [iconscout - Files Icon Pack](https://iconscout.com/icon/file-264)
 
 ## Licencia
 
 Distribuido bajo la licencia [GPL v3](https://www.gnu.org/licenses/gpl-3.0). Mira `LICENSE` para más información.
-
-- Copyright 2021 © Eptor.
-</p>

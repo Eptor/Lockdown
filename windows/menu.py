@@ -144,7 +144,10 @@ class Ui_menu_window(object):
         self.descripcion_drop.setFrameShadow(QFrame.Sunken)
         self.esconder_img = QPushButton(self.centralwidget_menu)
         self.esconder_img.setObjectName(u"esconder_img")
-        self.esconder_img.setGeometry(QRect(10, 607, 120, 28))
+        self.esconder_img.setGeometry(QRect(540, 410, 120, 28))
+        self.revelar_img = QPushButton(self.centralwidget_menu)
+        self.revelar_img.setObjectName(u"revelar_img")
+        self.revelar_img.setGeometry(QRect(670, 410, 120, 28))
         menu_window.setCentralWidget(self.centralwidget_menu)
         self.fondo.raise_()
         self.listWidget.raise_()
@@ -166,6 +169,7 @@ class Ui_menu_window(object):
         self.drop_button.raise_()
         self.descripcion_drop.raise_()
         self.esconder_img.raise_()
+        self.revelar_img.raise_()
 
         self.retranslateUi(menu_window)
 
@@ -212,6 +216,9 @@ class Ui_menu_window(object):
                 None))
         self.esconder_img.setText(
             QCoreApplication.translate("menu_window", u"Esconder archivos",
+                                       None))
+        self.revelar_img.setText(
+            QCoreApplication.translate("menu_window", u"Revelar archivos",
                                        None))
 
     # retranslateUi

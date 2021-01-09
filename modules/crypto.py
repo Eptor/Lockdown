@@ -97,5 +97,6 @@ def generador(tipo):
     return password
 
 
+
 if __name__ == "__main__":
     print(mnemotecnica())

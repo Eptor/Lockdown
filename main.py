@@ -8,6 +8,7 @@ from windows.datos_popup import Ui_data_popup
 from windows.add_data import Ui_add_data
 from windows.run_install import Ui_popup_window
 from windows.enc_files import Ui_encrypt_menu
+from windows.dec_files import Ui_decrypt_menu
 
 # Modulos vanila
 import os
@@ -111,9 +112,10 @@ class login_window_class(QMainWindow, Ui_login_window):
                 self.menu = menu_window_class()
                 self.menu.show()
                 self.close()
-        except:
+        except Exception as e:
             QMessageBox.warning(self, "Advertencia",
                                 f"Las credenciales no coinciden ")
+            print(e)
 
     def recovery_popup(self):
         """ Popup para solicitar la clave mnemotécnica """
@@ -291,6 +293,7 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         self.convertir.clicked.connect(self.traducir_morse)
         self.copiar_morse.clicked.connect(self.morse_copiar)
         self.esconder_img.clicked.connect(self.show_enc_file)
+        self.revelar_img.clicked.connect(self.show_rev_file)
 
     def update(self):
         """ actualiza los items en la lista """
@@ -435,6 +438,10 @@ class menu_window_class(QMainWindow, Ui_menu_window):
         self.enc = esconder_archivos()
         self.enc.show()
 
+    def show_rev_file(self):
+        self.rev = revelar_archivos()
+        self.rev.show()
+
 
 class esconder_archivos(QMainWindow, Ui_encrypt_menu):
     """ Esconde los archivos en una imagen """
@@ -491,12 +498,60 @@ class esconder_archivos(QMainWindow, Ui_encrypt_menu):
             for file in self.file_paths:
                 zip.write(file, arcname=f"Hidden/{os.path.basename(file)}")
 
-        # Hides the zip file into the picture, creating a duplicate of said picture with the zip file inside
+        QMessageBox.information(
+            self, "Atencion",
+            "Espera mientras se esconden tu archivos\nEs posible que la ventana se congele durante el proceso"
+        )
+
         os.system(
             f'copy /b "{Path(self.pic)}" + {self.zip_name} "{self.new_pic_location}" && del {self.zip_name}'
         )
 
         self.file_paths.clear()
+
+
+class revelar_archivos(QMainWindow, Ui_decrypt_menu):
+    """ Revela los archivos escondidos por Hides """
+    def __init__(self, *args, **kwargs):
+        QMainWindow.__init__(self, *args, **kwargs)
+        self.setupUi(self)
+
+        self.unzip_file_search.clicked.connect(self.file)
+        self.output_dir_search.clicked.connect(self.get_output)
+        self.start.clicked.connect(self.reveal)
+
+    def file(self):
+        self.pic = QFileDialog.getOpenFileName(self, "Selecciona la imagen")[0]
+
+        self.unzip_file.setText(self.pic)
+
+    def get_output(self):
+        self.output = str(
+            QFileDialog.getExistingDirectory(self, "Selecciona un directorio"))
+
+        self.output_dir.setText(self.output)
+
+    def unzip(self, path, file):
+        with ZipFile(file, "r") as zip:
+            zip.extractall(path=Path(f"{path}"))
+
+    def reveal(self):
+        try:
+            QMessageBox.information(
+                self, "Atencion",
+                "Espera mientras se revelan tu archivos\nEs posible que la ventana se congele durante el proceso"
+            )
+
+            self.unzip(
+                self.output,
+                self.pic,
+            )
+
+        except Exception as e:
+            QMessageBox.warning(self, "Error", f"El proceso falló\error:{e}")
+        else:
+            QMessageBox.information(self, "Completado",
+                                    "Archivos revelados satisfactoriamente.")
 
 
 class popup_class(QMainWindow, Ui_popup_window):

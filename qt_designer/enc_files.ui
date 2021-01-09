@@ -17,8 +17,8 @@
    <string>Hides - El ocultador de archivos</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../Icons/favicon.ico</normaloff>../Icons/favicon.ico</iconset>
+   <iconset resource="../recursos.qrc">
+    <normaloff>:/logo/img/Hides.ico</normaloff>:/logo/img/Hides.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QListWidget" name="files_list">

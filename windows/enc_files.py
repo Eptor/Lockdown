@@ -22,7 +22,7 @@ class Ui_encrypt_menu(object):
         encrypt_menu.setEnabled(True)
         encrypt_menu.resize(665, 271)
         icon = QIcon()
-        icon.addFile(u"../Icons/favicon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u":/logo/img/Hides.ico", QSize(), QIcon.Normal, QIcon.Off)
         encrypt_menu.setWindowIcon(icon)
         self.centralwidget = QWidget(encrypt_menu)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -36,6 +36,7 @@ class Ui_encrypt_menu(object):
         self.search_folder = QPushButton(self.centralwidget)
         self.search_folder.setObjectName(u"search_folder")
         self.search_folder.setGeometry(QRect(10, 230, 321, 31))
+        self.search_folder.setLayoutDirection(Qt.RightToLeft)
         icon1 = QIcon()
         icon1.addFile(u":/files/img/folder.png", QSize(), QIcon.Normal,
                       QIcon.Off)
@@ -129,7 +130,9 @@ class Ui_encrypt_menu(object):
             QCoreApplication.translate("encrypt_menu",
                                        u"Hides - El ocultador de archivos",
                                        None))
-        self.search_folder.setText("")
+        self.search_folder.setText(
+            QCoreApplication.translate("encrypt_menu",
+                                       u"Archivos a esconder  ", None))
         self.original_img_label.setText(
             QCoreApplication.translate("encrypt_menu", u"Foto original", None))
         self.search_image.setText("")
@@ -141,7 +144,7 @@ class Ui_encrypt_menu(object):
             QCoreApplication.translate("encrypt_menu", u"Ej: Archivo_oculto",
                                        None))
         self.start.setText(
-            QCoreApplication.translate("encrypt_menu", u"Esconder archivos   ",
+            QCoreApplication.translate("encrypt_menu", u"Esconder archivos  ",
                                        None))
         self.new_location_label.setText(
             QCoreApplication.translate("encrypt_menu",
