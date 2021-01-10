@@ -104,20 +104,24 @@ Puedes descargar el ejecutable desde la seccion "Releases", aunque no siempre es
 Es posible crear un ejecutable tanto del instalador como del programa principal, para esto usaras Pyinstaler.
 Deberás utilizar los archivos .spec que vienen en la carpeta Pyinstaller_specs
 
-Mueve los archivos **main.pyw** e **install.pyw** a la carpeta Pyinstaller_specs y usalos de la siguiente manera:
+Mueve los archivos **Lockdown.spec** e **Lockdown_instalador.spec** a la carpeta raíz y usalos de la siguiente manera:
 
 ```sh
 pyinstaller Lockdown.spec
 ```
 
-y
+Mueve el .exe a una nueva carpeta y despues utiliza:
 
 ```sh
 pyinstaller Lockdown_instalador.spec
 ```
 
-Despues mueve los dos ejecutables a un folder junto a los archivos **words.txt** y **styles.css** y
+y de igual manera mueve el .exe a la carpeta donde instalarás Lockdown.
+
+Despues mueve los archivos **words.txt** y **styles.css** a la carpeta destino y
 podrás ejecutarlos sin problema.
+
+Nota: Después de la instalar, puedes eliminar el instalador y el archivo words.txt
 
 ## Donaciones
 
@@ -151,10 +155,8 @@ Para contribuir, sigue las siguientes instrucciones:
 - Icono refresh: [iconscout](https://iconscout.com/icon/refresh-reload-recycle-synchronize-retry)
 - Icono convertir: [iconscout](https://iconscout.com/icons/arrow), fue creado por by [Chameleon Design](https://iconscout.com/contributors/chamedesign)
 - Iconos flechas: [iconscout - Unicons Font](https://iconscout.com/icon-pack/arrows-57)
+- Icono instalador: [iconscout - Vincent Le Moign](https://iconscout.com/icons/download)
 
 ## Licencia
 
 Distribuido bajo la licencia [GPL v3](https://www.gnu.org/licenses/gpl-3.0). Mira `LICENSE` para más información.
-
-- Copyright 2021 © Eptor.
-</p>
