@@ -91,7 +91,7 @@ Al igual que en la recuperación de la contraseña, seleccionaras "Opciones" en 
 
 ### Integración con Hides #1 (8/01/2021)
 
-- Se creó una [rama nueva](https://github.com/Eptor/Lockdown/tree/Hides) para el testeo de la integración con [Hides](https://github.com/Eptor/Hides), se espera un merge con la rama principal (GUI) dentro de la siguiente semana
+- Se creó una [rama nueva](https://github.com/Eptor/Lockdown/tree/Hides) para el testeo de la integración con [Hides](https://github.com/Eptor/Hides), <s>se espera un merge con la rama principal (GUI) dentro de la siguiente semana.</s> Se decidió mantener Hides dentro de una rama separada a la principal, por lo menos de momento.
 
 ## Ejecutable para Windows
 
