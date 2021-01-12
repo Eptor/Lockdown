@@ -11,6 +11,10 @@
 <img src=img/lockdown.png height=100>
 </p>
 
+<p align="center">
+<a href=README.md>Español</a> - <a href=README.en.md>English</a>
+</p>
+
 Lockdown is a password manager without an internet connection, which facilitates trust in the user since nothing is being sent to anyone.
 
 This is the menu
