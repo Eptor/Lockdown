@@ -11,7 +11,9 @@
 <img src=img/lockdown.png height=100>
 </p>
 
-### [Español](README.md) - [English](README.en.md)
+<p align="center">
+<a href=README.md>Español</a> - <a href=README.en.md>English</a>
+</p>
 
 Lockdown es un administrador de contraseñas sin conexión a internet, lo que facilita la confianza en el usuario pues nada está siendo enviado a nadie.
 
