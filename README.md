@@ -11,6 +11,8 @@
 <img src=img/lockdown.png height=100>
 </p>
 
+### [Español](README.md) - [English](README.en.md)
+
 Lockdown es un administrador de contraseñas sin conexión a internet, lo que facilita la confianza en el usuario pues nada está siendo enviado a nadie.
 
 Este es el menú
@@ -150,12 +152,12 @@ Para contribuir, sigue las siguientes instrucciones:
 ## Creditos
 
 - Imagen blurr: [ianbarnard.co.uk](http://www.ianbarnard.co.uk/wp-content/uploads/2013/09/free-blurred-web-backgrounds-09.jpg)
-- Icono sacado de: [iconscout](https://iconscout.com/icon/lockdown-2318925), fue creado por [Nithinan Tatah](https://iconscout.com/contributors/nithinan-tatah)
+- Icono sacado de [iconscout](https://iconscout.com/icon/lockdown-2318925), creado por [Nithinan Tatah](https://iconscout.com/contributors/nithinan-tatah)
 - Icono copiar: [iconscout](https://iconscout.com/icon/copy-197)
 - Icono refresh: [iconscout](https://iconscout.com/icon/refresh-reload-recycle-synchronize-retry)
-- Icono convertir: [iconscout](https://iconscout.com/icons/arrow), fue creado por by [Chameleon Design](https://iconscout.com/contributors/chamedesign)
+- Icono convertir: [iconscout](https://iconscout.com/icons/arrow), creado por [Chameleon Design](https://iconscout.com/contributors/chamedesign)
 - Iconos flechas: [iconscout - Unicons Font](https://iconscout.com/icon-pack/arrows-57)
-- Icono instalador: [iconscout - Vincent Le Moign](https://iconscout.com/icons/download)
+- Icono instalador: [iconscout](https://iconscout.com/icons/download) por Vincent Le Moign
 
 ## Licencia
 
